@@ -1,2 +1,2 @@
 # rei-overlay
-overlay for testing
+overlay for testing only
