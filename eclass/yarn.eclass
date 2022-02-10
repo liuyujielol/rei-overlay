@@ -87,12 +87,6 @@ _YARN_OFFLINE_MIRROR="${T}/yarn-mirror/"
 # By default sets to ${WORKDIR}
 YARN_WORKDIR="${WORKDIR}"
 
-# @ECLASS-VARIABLE: YARN_OUTPUTDIR
-# @DESCRIPTION:
-# The build output directory for yarn to work with
-# By default sets to ${YARN_WORKDIR}/build
-YARN_OUTPUTDIR="${YARN_WORKDIR}/build"
-
 # @FUNCTION: yarn_set_globals
 # @DESCRIPTION:
 # Generate real src_uri variables and set yarn registry
