@@ -54,7 +54,7 @@ BDEPEND="
 	sys-apps/yarn
 "
 
-EXPORT_FUNCTIONS src_unpack src_prepare src_compile
+EXPORT_FUNCTIONS src_unpack src_prepare
 
 # @ECLASS-VARIABLE: EYARN_RESOLVED
 # @REQUIRED
@@ -175,36 +175,6 @@ yarn_offline_install() {
 
 	cd "${YARN_WORKDIR}" || die "cd failed"
 	yarn install --offline || die
-}
-
-# @FUNCTION: yarn_src_compile
-# @DESCRIPTION:
-# General function for compiling with yarn.
-# Passes arguments to yarn by reading from an optionally pre-defined local
-# myyarnargs bash array.
-# @CODE
-# src_compile() {
-# 	local myyarnargs=(
-# 		--no-optional
-# 	)
-# 	yarn_src_compile
-# }
-# @CODE
-yarn_src_compile() {
-	debug-print-function ${FUNCNAME} "$@"
-
-	# Make the array a local variable since <=portage-2.1.6.x does not support
-	# global arrays (see bug #297255). But first make sure it is initialised.
-	[[ -z ${myyarnargs} ]] && declare -a myyarnargs=()
-	local myyarnargstype=$(declare -p myyarnargs 2>&-)
-	if [[ "${myyarnargstype}" != "declare -a myyarnargs="* ]]; then
-		die "myyarnargs must be declared as array"
-	fi
-
-	local myyarnargs_local=( "${myyarnargs[@]}" )
-
-	cd ${YARN_WORKDIR} || die "cd failed"
-	OUTPUT_DIR="${YARN_OUTPUTDIR}" yarn build "${myyarnargs_local[@]}" || die
 }
 
 _YARN_ECLASS=1
