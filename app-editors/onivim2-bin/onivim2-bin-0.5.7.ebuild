@@ -17,7 +17,22 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
-DEPEND=""
+DEPEND="
+	dev-libs/glib:2
+	sys-libs/ncurses
+	media-libs/fontconfig
+	media-libs/harfbuzz
+	media-libs/libjpeg-turbo
+	>=net-libs/nodejs-14.17.5-r1
+	x11-libs/gtk+:3
+	x11-libs/libXcursor
+	x11-libs/libXi
+	x11-libs/libXinerama
+	x11-libs/libxkbfile
+	x11-libs/libXrandr
+	virtual/acl
+	virtual/glu
+"
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
