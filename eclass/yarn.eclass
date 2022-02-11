@@ -7,9 +7,10 @@
 # @AUTHOR:
 # liuyujielol <2073201758GD@gmail.com>
 # @SUPPORTED_EAPIS: 7 8
-# @BLURB: common build functions for nodejs package uses yarn
+# @BLURB: set up a basic env for building nodejs package which uses yarn.
 # @DESCRIPTION:
-# This eclass provides functions to build nodejs package via yarn offline.
+# This eclass provides functions to prepare yarn dependencies for portage
+# and makes yarn install them offline.
 #
 # @EXAMPLE:
 #
@@ -17,7 +18,7 @@
 #
 # inherit yarn
 #
-# EYARN_RESOLVED=(
+# EYARN_LOCK=(
 #   "@ampproject/remapping/-/remapping-2.0.4.tgz"
 #   "ansi-html-community/-/ansi-html-community-0.0.8.tgz"
 # )
@@ -25,9 +26,9 @@
 # yarn_set_globals
 #
 # SRC_URI="https://github.com/example/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-#		   ${EYARN_RESOLVED_SRC_URI}"
+#		   ${EYARN_LOCK_SRC_URI}"
 #
-# YARN_WORKDIR="${WORKDIR}/web"
+# YARN_WORKDIR="${S}/web"
 #
 # src_unpack() {
 #	unpack "${P}.tar.gz"
@@ -35,11 +36,12 @@
 # ...
 # }
 #
-#src_prepare(){
+# src_prepare(){
 #	default
 #	yarn_offline_install
 # ...
 # }
+#
 # @CODE
 
 if [[ ! ${_YARN_ECLASS} ]]; then
@@ -50,13 +52,11 @@ case ${EAPI} in
 esac
 
 BDEPEND="
-	net-libs/nodejs
+	>=net-libs/nodejs-14.16
 	sys-apps/yarn
 "
 
-EXPORT_FUNCTIONS src_unpack src_prepare
-
-# @ECLASS-VARIABLE: EYARN_RESOLVED
+# @ECLASS-VARIABLE: EYARN_LOCK
 # @REQUIRED
 # @DESCRIPTION:
 # This is an array based on yarn.lock file content
@@ -64,7 +64,7 @@ EXPORT_FUNCTIONS src_unpack src_prepare
 # e.g.:
 # sed -r -n -e 's/^[ ]*resolved \"(.*)\#.*\"$/\1/g; s/https:\/\/registry.yarnpkg.com\//\0/g; s/https:\/\/registry.yarnpkg.com\///p' yarn.lock | sort | uniq | sed 's/\(.*\)/"\1"/g'
 
-# @ECLASS-VARIABLE: EYARN_RESOLVED_SRC_URI
+# @ECLASS-VARIABLE: EYARN_LOCK_SRC_URI
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Coverted real src_uri and corresponding filename.
@@ -72,8 +72,14 @@ EXPORT_FUNCTIONS src_unpack src_prepare
 # @ECLASS-VARIABLE: _YARN_RESOLVED_MAP
 # @INTERNAL
 # @DESCRIPTION:
-# Mapping back from Gentoo distfile name to upstream distfile path.
+# Variable for recording whether a distfile belongs to yarn.
 declare -A -g _YARN_RESOLVED_MAP
+
+# @ECLASS-VARIABLE: _YARN_RESOLVED_MAP_3RDPARTY
+# @INTERNAL
+# @DESCRIPTION:
+# Variable for recording whether a distfile (from a 3rd party repository) belongs to yarn.
+declare -A -g _YARN_RESOLVED_MAP_3RDPARTY
 
 # @ECLASS-VARIABLE: _YARN_OFFLINE_MIRROR
 # @INTERNAL
@@ -84,12 +90,12 @@ _YARN_OFFLINE_MIRROR="${T}/yarn-mirror/"
 # @ECLASS-VARIABLE: YARN_WORKDIR
 # @DESCRIPTION:
 # The source file directory for yarn to work with
-# By default sets to ${WORKDIR}
-YARN_WORKDIR="${WORKDIR}"
+# By default sets to ${S}
+YARN_WORKDIR="${S}"
 
 # @FUNCTION: yarn_set_globals
 # @DESCRIPTION:
-# Generate real src_uri variables and set yarn registry
+# Generate real src_uri variables
 yarn_set_globals() {
 	debug-print-function "${FUNCNAME}" "$@"
 
@@ -97,27 +103,84 @@ yarn_set_globals() {
 	local newline=$'\n'
 	local line
 
-	for line in "${EYARN_RESOLVED[@]}"; do
+	for line in "${EYARN_LOCK[@]}"; do
 		_distfile=${line//\//:2F}
 		# SRC_URI
 		_uri="mirror://yarn/${line}"
-		EYARN_RESOLVED_SRC_URI+=" ${_uri} -> ${_distfile}${newline}"
+		EYARN_LOCK_SRC_URI+=" ${_uri} -> ${_distfile}${newline}"
 		_YARN_RESOLVED_MAP["${_distfile}"]=1
 	done
 
 	_YARN_SET_GLOBALS_CALLED=1
 }
 
+# @FUNCTION: yarn_mirror_add_pkgs
+# @DESCRIPTION:
+# Function to add 3rd party packages that are not in official
+# yarn repository to offline mirror
+# NOTE: the filename must be the exract filename yarn wants.
+#
+# @EXAMPLE
+#
+# @CODE
+#
+# SRC_URI+="https://registry.example-domain.com/css-loader/download/css-loader-5.2.7.tgz"
+#
+# src_unpack() {
+# 	local other_deps=(
+#		"css-loader-5.2.7.tgz"
+#	)
+#	yarn_mirror_add_pkgs "${other_deps[@]}"
+# }
+#
+# @CODE
+yarn_mirror_add_pkgs() {
+	debug-print-function "${FUNCNAME}" "$@"
+
+	local arg
+	for arg in "${@}"; do
+		if [[ -e "${DISTDIR}/${arg}" ]]; then
+			_YARN_RESOLVED_MAP_3RDPARTY["${arg}"]=1
+		fi
+	done
+}
+
 # @FUNCTION: yarn_src_unpack
 # @DESCRIPTION:
-# and unpack other targets.
+# Soft link the local yarn pkg from ${DISTDIR} to ${_YARN_OFFLINE_MIRROR}
+# for setting up yarn to use offline mirror and unpack other targets.
+# NOTE:yarn_set_globals must be called before.
 yarn_src_unpack() {
 	debug-print-function "${FUNCNAME}" "$@"
 
 	if [[ "${#EYARN_RESOLVED[@]}" -gt 0 ]]; then
-		yarn_set_offline_mirror
+		if [[ ! ${_YARN_SET_GLOBALS_CALLED} ]]; then
+			die "yarn_set_globals must be called in global scope"
+		fi
+
+		mkdir -p "${_YARN_OFFLINE_MIRROR}" || die
+
+		local f df
+		for f in ${A}; do
+			if [[ -n ${_YARN_RESOLVED_MAP["${f}"]} ]]; then
+				df="$(echo ${f//:2F//} | sed -r -e 's#(@([^@/]+))?\/?([^@/]+)\/\-\/([^/]+).tgz#yarn-\1-\4.tgz#g')"
+				df="${df#yarn--}"
+				df="${df#yarn-}"
+				ln -s "${DISTDIR}/${f}" "${_YARN_OFFLINE_MIRROR}/${df}" || die
+			elif [[ -n ${_YARN_RESOLVED_MAP_3RDPARTY["${f}"]} ]]; then
+				ln -s "${DISTDIR}/${f}" "${_YARN_OFFLINE_MIRROR}/${f//:2F//}" || die
+			else
+				unpack "${f}"
+			fi
+		done
 	else
 		default
+	fi
+	#set yarn-offline-mirror
+	if [[ -e "${YARN_WORKDIR}" ]]; then
+		echo "yarn-offline-mirror \"${_YARN_OFFLINE_MIRROR}\"" >> "${YARN_WORKDIR}/.yarnrc" || die
+	else
+		die "the yarn workdir ${YARN_WORKDIR} does not exist"
 	fi
 }
 
@@ -126,7 +189,8 @@ yarn_src_unpack() {
 # If your ebuild redefines src_unpack and uses EYARN_RESOLVED you need to call
 # this function in src_unpack.
 # Soft link the local yarn pkg from ${DISTDIR} to ${_YARN_OFFLINE_MIRROR}
-# and set up yarn to use offline mirror.
+# for setting up yarn to use offline mirror.
+# NOTE:yarn_set_globals must be called before.
 yarn_set_offline_mirror() {
 	debug-print-function "${FUNCNAME}" "$@"
 
@@ -135,17 +199,22 @@ yarn_set_offline_mirror() {
 	fi
 
 	mkdir -p "${_YARN_OFFLINE_MIRROR}" || die
-
+	# soft link targets
 	local f df
 	for f in ${A}; do
 		if [[ -n ${_YARN_RESOLVED_MAP["${f}"]} ]]; then
+			# make the filename be the exract filename yarn wants
 			df="$(echo ${f//:2F//} | sed -r -e 's#(@([^@/]+))?\/?([^@/]+)\/\-\/([^/]+).tgz#yarn-\1-\4.tgz#g')"
-			df="$(echo ${df#yarn--})"
-			df="$(echo ${df#yarn-})"
+			df="${df#yarn--}"
+			df="${df#yarn-}"
 			ln -s "${DISTDIR}/${f}" "${_YARN_OFFLINE_MIRROR}/${df}" || die
+			continue
+		fi
+		if [[ -n ${_YARN_RESOLVED_MAP_3RDPARTY["${f}"]} ]]; then
+			ln -s "${DISTDIR}/${f}" "${_YARN_OFFLINE_MIRROR}/${f}" || die
 		fi
 	done
-
+	# set yarn-offline-mirror
 	if [[ -e "${YARN_WORKDIR}" ]]; then
 		echo "yarn-offline-mirror \"${_YARN_OFFLINE_MIRROR}\"" >> "${YARN_WORKDIR}/.yarnrc" || die
 	else
@@ -155,7 +224,7 @@ yarn_set_offline_mirror() {
 
 # @FUNCTION: yarn_src_prepare
 # @DESCRIPTION:
-# General function for prepare source files with yarn.
+# General function for preparing source files with yarn.
 yarn_src_prepare(){
 	default
 	yarn_offline_install
@@ -170,6 +239,8 @@ yarn_offline_install() {
 	cd "${YARN_WORKDIR}" || die "cd failed"
 	yarn install --offline || die
 }
+
+EXPORT_FUNCTIONS src_unpack src_prepare
 
 _YARN_ECLASS=1
 fi
