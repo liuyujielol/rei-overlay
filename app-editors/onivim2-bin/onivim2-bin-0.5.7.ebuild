@@ -5,7 +5,7 @@ EAPI=8
 
 inherit desktop xdg
 
-DESCRIPTION="Native, lightweight modal code editor. third party binary"
+DESCRIPTION="Native, lightweight modal code editor (third party binary)"
 HOMEPAGE="https://github.com/santilococo/oni2"
 SRC_URI="
 	https://github.com/santilococo/oni2/releases/download/v${PV}/AppCache.tar -> ${P}-AppCache.tar
