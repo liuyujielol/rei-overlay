@@ -1,0 +1,8 @@
+# overlay for testing only
+# do not use
+app-editors/onivim2-bin
+net-proxy/v2rayA
+app-arch/unarr
+media-plugins/osdlyrics
+media-sound/termusic
+media-sound/netease-cloud-music-gtk
