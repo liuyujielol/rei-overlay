@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=lapce
+Comment=Editing evolved
+GenericName=Lapce Code Editor
+Exec=/usr/bin/lapce
+Icon=lapce
+Type=Application
+StartupNotify=false
+StartupWMClass=Code
+Categories=Utility;TextEditor;Development;IDE;
+MimeType=text/plain;inode/directory;application/x-code-workspace;
