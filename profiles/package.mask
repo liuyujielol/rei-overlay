@@ -1,12 +1,12 @@
 # overlay for testing only
 # do not use
-app-editors/onivim2-bin
-net-proxy/v2rayA
 app-arch/unarr
-media-plugins/osdlyrics
-media-sound/termusic
-media-sound/netease-cloud-music-gtk
-net-proxy/Qv2ray
 app-editors/cpeditor
-app-editors/lapce
 app-editors/KomodoEdit-bin
+app-editors/lapce
+app-editors/onivim2-bin
+media-plugins/osdlyrics
+media-sound/netease-cloud-music-gtk
+media-sound/termusic
+net-proxy/Qv2ray
+net-proxy/v2rayA
