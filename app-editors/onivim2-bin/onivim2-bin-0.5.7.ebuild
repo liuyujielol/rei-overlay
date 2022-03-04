@@ -38,7 +38,20 @@ BDEPEND=""
 
 #QA_PRESTRIPPED="*"
 #QA_FLAGS_IGNORED="*"
-#QA_PREBUILT=""
+QA_PREBUILT="
+	/opt/${PN}/usr/bin/Oni2
+	/opt/${PN}/usr/bin/Oni2_editor
+	/opt/${PN}/usr/bin/node
+	/opt/${PN}/usr/bin/rg
+	/opt/${PN}/usr/lib/libjpeg.a
+	/opt/${PN}/usr/lib/libjpeg.so
+	/opt/${PN}/usr/lib/libjpeg.so.62
+	/opt/${PN}/usr/lib/libjpeg.so.62.3.0
+	/opt/${PN}/usr/lib/libturbojpeg.a
+	/opt/${PN}/usr/lib/libturbojpeg.so
+	/opt/${PN}/usr/lib/libturbojpeg.so.0
+	/opt/${PN}/usr/lib/libturbojpeg.so.0.2.0
+"
 
 S="${WORKDIR}"
 
@@ -58,16 +71,9 @@ src_install() {
 	domenu "${WORKDIR}"/_release/Onivim2.AppDir/Onivim2.desktop
 	doicon "${WORKDIR}"/_release/Onivim2.AppDir/Onivim2.png
 	fperms 755 "/opt/${PN}/AppRun"
-	fperms 755 "/opt/${PN}/usr/bin/Oni2"
-	fperms 755 "/opt/${PN}/usr/bin/Oni2_editor"
-	fperms 755 "/opt/${PN}/usr/bin/node"
-	fperms 755 "/opt/${PN}/usr/bin/rg"
-	fperms 755 "/opt/${PN}/usr/lib/libjpeg.a"
-	fperms 755 "/opt/${PN}/usr/lib/libjpeg.so"
-	fperms 755 "/opt/${PN}/usr/lib/libjpeg.so.62"
-	fperms 755 "/opt/${PN}/usr/lib/libjpeg.so.62.3.0"
-	fperms 755 "/opt/${PN}/usr/lib/libturbojpeg.a"
-	fperms 755 "/opt/${PN}/usr/lib/libturbojpeg.so"
-	fperms 755 "/opt/${PN}/usr/lib/libturbojpeg.so.0"
-	fperms 755 "/opt/${PN}/usr/lib/libturbojpeg.so.0.2.0"
+
+	local f
+	for f in "${QA_PREBUILT}"; do
+		fperms 755 "${f}"
+	done
 }
