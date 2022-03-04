@@ -5,3 +5,5 @@ profiles/use.local.desc
 *.swp
 *.swo
 
+# ignore scripts output
+net-proxy/v2rayA/scripts/work
