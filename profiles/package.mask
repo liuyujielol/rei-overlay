@@ -9,3 +9,4 @@ media-sound/netease-cloud-music-gtk
 net-proxy/Qv2ray
 app-editors/cpeditor
 app-editors/lapce
+app-editors/KomodoEdit-bin
