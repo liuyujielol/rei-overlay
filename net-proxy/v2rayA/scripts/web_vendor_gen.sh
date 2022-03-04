@@ -83,6 +83,7 @@ main() {
 		mkdir "${WORK}"
 	else
 		rm -r "${WORK}"
+		mkdir "${WORK}"
 	fi
 
 	# comment out unwanted steps
