@@ -6,4 +6,4 @@ profiles/use.local.desc
 *.swo
 
 # ignore scripts output
-net-proxy/v2rayA/scripts/work/*
+net-proxy/v2rayA/scripts/work/
