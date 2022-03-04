@@ -6,3 +6,6 @@ app-arch/unarr
 media-plugins/osdlyrics
 media-sound/termusic
 media-sound/netease-cloud-music-gtk
+net-proxy/Qv2ray
+app-editors/cpeditor
+app-editors/lapce
