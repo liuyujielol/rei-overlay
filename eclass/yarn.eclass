@@ -153,7 +153,7 @@ yarn_mirror_add_pkgs() {
 yarn_src_unpack() {
 	debug-print-function "${FUNCNAME}" "$@"
 
-	if [[ "${#EYARN_RESOLVED[@]}" -gt 0 ]]; then
+	if [[ "${#EYARN_LOCK[@]}" -gt 0 ]]; then
 		if [[ ! ${_YARN_SET_GLOBALS_CALLED} ]]; then
 			die "yarn_set_globals must be called in global scope"
 		fi
