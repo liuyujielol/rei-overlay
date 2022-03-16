@@ -20,7 +20,7 @@ _YARN="/usr/bin/yarn"
 YARN_WORKDIR="${GIT_WORKDIR}/gui"
 YARN_CACHE_FOLDER="${WORK}/yarn_cache"
 #YARN_REGISTRY="https://registry.yarnpkg.com"
-YARN_REGISTRY="https://registry.npmmirror.com"
+#YARN_REGISTRY="https://registry.npmmirror.com"
 #YARN_REGISTRY="https://registry.npm.taobao.org"
 YARN_OFFLINE_MIRROR="${WORK}/yarn_offline_mirror"
 
@@ -61,9 +61,9 @@ yarn_set_offline_mirror() {
 		mkdir "${YARN_OFFLINE_MIRROR}" || die "mkdir failed"
 	fi
 
-	echo "registry \"${YARN_REGISTRY}\"" > "${YARN_WORKDIR}/.yarnrc"
+	#echo "registry \"${YARN_REGISTRY}\"" > "${YARN_WORKDIR}/.yarnrc"
 	echo "yarn-offline-mirror \"${YARN_OFFLINE_MIRROR}\"" > "${YARN_WORKDIR}/.yarnrc"
-	echo "yarn-offline-mirror-pruning true" >> "${YARN_WORKDIR}/.yarnrc"
+	#echo "yarn-offline-mirror-pruning true" >> "${YARN_WORKDIR}/.yarnrc"
 }
 
 yarn_fetch() {
