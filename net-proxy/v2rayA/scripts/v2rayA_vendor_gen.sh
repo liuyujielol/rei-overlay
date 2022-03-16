@@ -26,6 +26,9 @@ YARN_OFFLINE_MIRROR="${WORK}/yarn_offline_mirror"
 
 _WGET="/usr/bin/wget"
 
+_GO="/usr/bin/go"
+GO_WORKDIR="${GIT_WORKDIR}/service"
+
 _TAR="/bin/tar"
 
 die() { echo "$*" 1>&2 ; exit 1; }
@@ -70,19 +73,31 @@ yarn_fetch() {
 
 pack_cache() {
 	cd "${WORK}" || die "cd failed"
-	${_TAR} -czf "${WORK}/${P}-yarn_cache.tar.gz" -C ${WORK} "./yarn_cache"
+	${_TAR} -acf "${WORK}/${P}-yarn_cache.tar.gz" -C ${WORK} "./yarn_cache"
 }
 
 pack_offline_mirror() {
 	cd "${WORK}" || die "cd failed"
-	${_TAR} -czf "${WORK}/${P}-yarn_mirror.tar.gz" -C ${WORK} "./yarn_offline_mirror"
+	${_TAR} -acf "${WORK}/${P}-yarn_mirror.tar.gz" -C ${WORK} "./yarn_offline_mirror"
+}
+
+go_mod_download() {
+	cd ${GO_WORKDIR} || die "cd failed"
+	export GOPROXY="https://goproxy.cn/"
+
+	GOMODCACHE="${WORK}"/go-mod go mod download -modcacherw
+}
+
+pack_go_module() {
+	cd ${WORK} || die "cd failed"
+	tar -acf "${P}-deps.tar.xz" go-mod/
 }
 
 main() {
 	if [[ ! -e "${WORK}" ]]; then
 		mkdir "${WORK}"
 	else
-		rm -r "${WORK}"
+		rm -rf "${WORK}"
 		mkdir "${WORK}"
 	fi
 
@@ -92,6 +107,8 @@ main() {
 	yarn_fetch
 	#pack_cache
 	pack_offline_mirror
+	go_mod_download
+	pack_go_module
 }
 
 main
