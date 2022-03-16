@@ -12,7 +12,7 @@ SRC_URI="
 	https://github.com/v2rayA/v2rayA/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 "
 # 3rd-party generated vendor
-# generated with ./scripts/v2rayA_vendor_gen.sh
+# generated with https://github.com/liuyujielol/rei-overlay/blob/main/net-proxy/v2rayA/scripts/v2rayA_vendor_gen.sh
 SRC_URI+="
 	https://github.com/liuyujielol/rei-overlay/releases/download/vendor/v2rayA-${PV}-yarn_mirror.tar.gz
 	https://github.com/liuyujielol/rei-overlay/releases/download/vendor/v2rayA-${PV}-go-deps.tar.xz
