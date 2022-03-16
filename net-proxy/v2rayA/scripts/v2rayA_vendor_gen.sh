@@ -54,9 +54,6 @@ yarn_install() {
 }
 
 yarn_set_offline_mirror() {
-	if [[ ! -e "${YARN_WORKDIR}" ]]; then
-		mkdir "${YARN_WORKDIR}" || die "mkdir failed"
-	fi
 	if [[ ! -e "${YARN_OFFLINE_MIRROR}" ]]; then
 		mkdir "${YARN_OFFLINE_MIRROR}" || die "mkdir failed"
 	fi
@@ -73,24 +70,25 @@ yarn_fetch() {
 
 pack_cache() {
 	cd "${WORK}" || die "cd failed"
-	${_TAR} -acf "${WORK}/${P}-yarn_cache.tar.gz" -C ${WORK} "./yarn_cache"
+	${_TAR} -acf "${P}-yarn_cache.tar.gz"./yarn_cache
 }
 
 pack_offline_mirror() {
 	cd "${WORK}" || die "cd failed"
-	${_TAR} -acf "${WORK}/${P}-yarn_mirror.tar.gz" -C ${WORK} "./yarn_offline_mirror"
+	${_TAR} -acf "${P}-yarn_mirror.tar.gz" /yarn_offline_mirror
 }
 
 go_mod_download() {
 	cd ${GO_WORKDIR} || die "cd failed"
 	export GOPROXY="https://goproxy.cn/"
 
-	GOMODCACHE="${WORK}"/go-mod go mod download -modcacherw
+	export GOMODCACHE="${WORK}"/go-mod
+	${_GO} mod download -modcacherw
 }
 
 pack_go_module() {
 	cd ${WORK} || die "cd failed"
-	tar -acf "${P}-deps.tar.xz" go-mod/
+	${_TAR} -acf "${P}-go-deps.tar.xz" go-mod/
 }
 
 main() {
