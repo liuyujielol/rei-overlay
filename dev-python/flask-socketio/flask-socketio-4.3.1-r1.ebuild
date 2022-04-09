@@ -18,6 +18,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
+RESTRICT="!test? ( test )"
+
 RDEPEND=">=dev-python/flask-0.9[${PYTHON_USEDEP}]
 	dev-python/python-socketio[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
