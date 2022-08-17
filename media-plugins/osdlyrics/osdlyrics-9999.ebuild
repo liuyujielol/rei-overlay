@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8,9,10} )
 
 inherit python-r1 autotools xdg
 
@@ -14,6 +14,7 @@ SLOT="0"
 
 if [[ "${PV}" == 9999 ]]; then
 	inherit git-r3
+	KEYWORDS=""
 	EGIT_REPO_URI="https://github.com/osdlyrics/osdlyrics.git"
 else
 	KEYWORDS="~amd64"
