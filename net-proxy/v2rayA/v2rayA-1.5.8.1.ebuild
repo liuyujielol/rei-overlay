@@ -1663,17 +1663,11 @@ SRC_URI="
 LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+v2ray xray systemd"
-REQUIRED_USE="|| ( v2ray xray )"
+IUSE="systemd"
 
 DEPEND=""
 RDEPEND="
 	${DEPEND}
-	v2ray? ( || (
-		net-proxy/v2ray
-		net-proxy/v2ray-bin
-	) )
-	xray? ( >=net-proxy/Xray-1.4.3 )
 "
 BDEPEND="
 	>=dev-lang/go-1.18:*
