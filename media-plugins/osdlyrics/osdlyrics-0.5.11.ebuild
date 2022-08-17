@@ -14,7 +14,7 @@ SLOT="0"
 
 if [[ "${PV}" == 9999 ]]; then
 	inherit git-r3
-	KEYWORDS=""
+#	KEYWORDS=""
 	EGIT_REPO_URI="https://github.com/osdlyrics/osdlyrics.git"
 else
 	KEYWORDS="~amd64"
