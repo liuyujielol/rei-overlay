@@ -13,8 +13,8 @@ EGIT_REPO_URI="https://github.com/lapce/lapce.git"
 
 LICENSE="BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions Artistic-2 BSD-2 Boost-1.0 CC0-1.0 ISC MIT MPL-2.0 Unlicense ZLIB"
 SLOT="0"
-KEYWORDS="~amd64"
-#KEYWORDS=""
+#KEYWORDS="~amd64"
+KEYWORDS=""
 IUSE=""
 
 DEPEND="
