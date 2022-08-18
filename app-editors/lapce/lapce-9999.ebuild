@@ -9,12 +9,12 @@ DESCRIPTION="Lightning-fast and Powerful Code Editor written in Rust"
 HOMEPAGE="https://lapce.dev https://github.com/lapce/lapce"
 
 EGIT_REPO_URI="https://github.com/lapce/lapce.git"
-EGIT_COMMIT="6506ef9f0d1a4398f58eb785e84b3fb88489bb0a"
+#EGIT_COMMIT="6506ef9f0d1a4398f58eb785e84b3fb88489bb0a"
 
 LICENSE="BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions Artistic-2 BSD-2 Boost-1.0 CC0-1.0 ISC MIT MPL-2.0 Unlicense ZLIB"
 SLOT="0"
-#KEYWORDS="~amd64"
-KEYWORDS=""
+KEYWORDS="~amd64"
+#KEYWORDS=""
 IUSE=""
 
 DEPEND="
@@ -31,7 +31,6 @@ RDEPEND="${DEPEND}"
 
 src_unpack() {
 	git-r3_src_unpack
-	cd "${S}" || die "cd failed"
 	cargo_live_src_unpack
 }
 
