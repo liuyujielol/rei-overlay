@@ -241,11 +241,6 @@ src_configure() {
 		cargo_src_configure --no-default-features
 }
 
-src_compile() {
-	cargo_src_compile
-	die
-}
-
 src_install() {
 	dobin target/release/netease-cloud-music-gtk
 	domenu netease-cloud-music-gtk.desktop
