@@ -1,9 +1,9 @@
 #/bin/bash
 
-#set -ex
+set -ex
 
 PN="v2rayA"
-PV="1.5.6.2"
+PV="1.5.9.1698.1"
 P="${PN}-${PV}"
 
 WORK="$(pwd)/work"
@@ -20,7 +20,7 @@ _YARN="/usr/bin/yarn"
 YARN_WORKDIR="${GIT_WORKDIR}/gui"
 YARN_CACHE_FOLDER="${WORK}/yarn_cache"
 #YARN_REGISTRY="https://registry.yarnpkg.com"
-#YARN_REGISTRY="https://registry.npmmirror.com"
+YARN_REGISTRY="https://registry.npmmirror.com"
 #YARN_REGISTRY="https://registry.npm.taobao.org"
 YARN_OFFLINE_MIRROR="${WORK}/yarn_offline_mirror"
 
@@ -58,9 +58,9 @@ yarn_set_offline_mirror() {
 		mkdir "${YARN_OFFLINE_MIRROR}" || die "mkdir failed"
 	fi
 
-	#echo "registry \"${YARN_REGISTRY}\"" > "${YARN_WORKDIR}/.yarnrc"
+	echo "registry \"${YARN_REGISTRY}\"" > "${YARN_WORKDIR}/.yarnrc"
 	echo "yarn-offline-mirror \"${YARN_OFFLINE_MIRROR}\"" > "${YARN_WORKDIR}/.yarnrc"
-	#echo "yarn-offline-mirror-pruning true" >> "${YARN_WORKDIR}/.yarnrc"
+	echo "yarn-offline-mirror-pruning true" >> "${YARN_WORKDIR}/.yarnrc"
 }
 
 yarn_fetch() {
@@ -68,14 +68,14 @@ yarn_fetch() {
 	yarn_install
 }
 
-pack_cache() {
+pack_yarn_cache() {
 	cd "${WORK}" || die "cd failed"
-	${_TAR} -acf "${P}-yarn_cache.tar.gz"./yarn_cache
+	${_TAR} -acf "${WORK}/${P}-yarn_cache.tar.gz" yarn_cache
 }
 
-pack_offline_mirror() {
+pack_yarn_offline_mirror() {
 	cd "${WORK}" || die "cd failed"
-	${_TAR} -acf "${P}-yarn_mirror.tar.gz" /yarn_offline_mirror
+	${_TAR} -acf "${WORK}/${P}-yarn_mirror.tar.gz" yarn_offline_mirror
 }
 
 go_mod_download() {
@@ -83,30 +83,51 @@ go_mod_download() {
 	export GOPROXY="https://goproxy.cn/"
 
 	export GOMODCACHE="${WORK}"/go-mod
-	${_GO} mod download -modcacherw
+	# -modcacherw makes the build cache read/write
+	# -v prints the names of packages as they are compiled
+	# -x prints commands as they are executed
+	${_GO} mod download -modcacherw -x
+}
+
+go_mod_vendor() {
+	cd ${GO_WORKDIR} || die "cd failed"
+	export GOPROXY="https://goproxy.cn/"
+
+	export GOMODCACHE="${WORK}"/go-mod
+	${_GO} mod vendor
 }
 
 pack_go_module() {
 	cd ${WORK} || die "cd failed"
-	${_TAR} -acf "${P}-go-deps.tar.xz" go-mod/
+	${_TAR} -acf "${WORK}/${P}-go-deps.tar.gz" go-mod/
+}
+
+pack_go_vendor() {
+	cd ${GO_WORKDIR} || die "cd failed"
+	${_TAR} -acf "${WORK}/${P}-go-vendor.tar.gz" vendor/
 }
 
 main() {
 	if [[ ! -e "${WORK}" ]]; then
 		mkdir "${WORK}"
-	else
-		rm -rf "${WORK}"
-		mkdir "${WORK}"
+#	else
+#		rm -rf "${WORK}"
+#		mkdir "${WORK}"
 	fi
 
 	# comment out unwanted steps
+	# git
 	clone_repo
 	checkout_tag
+	# yarn
 	yarn_fetch
-	#pack_cache
-	pack_offline_mirror
+	pack_yarn_cache
+	pack_yarn_offline_mirror
+	# go
 	go_mod_download
+	go_mod_vendor
 	pack_go_module
+	pack_go_vendor
 }
 
 main
