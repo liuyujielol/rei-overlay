@@ -42,7 +42,8 @@ src_unpack() {
 	if [[ -e ${YARN_WORKDIR} ]]; then
 		echo "yarn-offline-mirror \"${WORKDIR}/yarn_offline_mirror\"" >> "${YARN_WORKDIR}/.yarnrc" || die
 	fi
-	yarn install --offline || die
+	cd "${YARN_WORKDIR}" || die
+	yarn install --offline --check-files || die
 
 	# GOMODCACHE has already been set to ${WORKDIR}/go-mod by go-module.eclass
 
@@ -68,8 +69,8 @@ src_install() {
 	keepdir "/etc/v2raya"
 
 	if use systemd; then
-		systemd_newunit "${S}"/install/universal/v2raya.service v2raya.service
-		systemd_newunit "${S}"/install/universal/v2raya@.service v2raya@.service
+		systemd_dounit "${S}"/install/universal/v2raya.service
+		systemd_dounit "${S}"/install/universal/v2raya-lite.service
 	fi
 
 	newicon -s 512 "${S}"/gui/public/img/icons/android-chrome-512x512.png v2raya.png
