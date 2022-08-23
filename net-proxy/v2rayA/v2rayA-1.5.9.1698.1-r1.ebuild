@@ -11,7 +11,7 @@ HOMEPAGE="https://v2raya.org/"
 SRC_URI="
 	https://github.com/v2rayA/v2rayA/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 "
-# maintenaner generated vendor
+# maintainer generated vendor
 # generated with https://github.com/liuyujielol/rei-overlay/blob/main/net-proxy/v2rayA/scripts/v2rayA_vendor_gen.sh
 SRC_URI+="
 	https://github.com/liuyujielol/vendors/releases/download/${PN}/${P}-yarn_mirror.tar.gz
@@ -37,7 +37,10 @@ src_unpack() {
 	# ${P}-yarn_mirror.tar.gz => ${WORKDIR}/yarn_offline_mirror
 	# ${P}-go-deps.tar.xz => ${WORKDIR}/go-mod
 	default
+}
 
+src_prepare() {
+	default
 	# set yarn-offline-mirror to ${WORKDIR}/yarn_offline_mirror
 	if [[ -e ${YARN_WORKDIR} ]]; then
 		echo "yarn-offline-mirror \"${WORKDIR}/yarn_offline_mirror\"" >> "${YARN_WORKDIR}/.yarnrc" || die
@@ -46,7 +49,6 @@ src_unpack() {
 	yarn install --offline --check-files || die
 
 	# GOMODCACHE has already been set to ${WORKDIR}/go-mod by go-module.eclass
-
 }
 
 src_compile() {
