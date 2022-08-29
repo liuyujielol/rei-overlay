@@ -19,8 +19,9 @@ SRC_URI+="
 "
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 IUSE="systemd"
+RESTRICT="mirror test"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
@@ -65,10 +66,9 @@ src_compile() {
 }
 
 src_test() {
-	# web gui (nodejs)
-	cd "${YARN_WORKDIR}" || die
-	yarn lint || die
 	# go service
+	# test fails as network in need
+	# RESTRICT="test" is set for now
 	cd "${S}/service" || die
 	ego test github.com/v2rayA/v2rayA/...
 }
