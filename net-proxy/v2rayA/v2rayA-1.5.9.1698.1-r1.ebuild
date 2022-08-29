@@ -32,21 +32,19 @@ BDEPEND="
 
 YARN_WORKDIR="${S}/gui"
 
-src_unpack() {
-	# ${P}.tar.gz => ${S}
-	# ${P}-yarn_mirror.tar.gz => ${WORKDIR}/yarn_offline_mirror
-	# ${P}-go-deps.tar.xz => ${WORKDIR}/go-mod
-	default
-}
+# ${P}.tar.gz => ${S}
+# ${P}-yarn_mirror.tar.gz => ${WORKDIR}/yarn_offline_mirror
+# ${P}-go-deps.tar.xz => ${WORKDIR}/go-mod
+#src_unpack() { default }
 
 src_prepare() {
 	default
 	# set yarn-offline-mirror to ${WORKDIR}/yarn_offline_mirror
 	if [[ -e ${YARN_WORKDIR} ]]; then
+		cd "${YARN_WORKDIR}" || die
 		echo "yarn-offline-mirror \"${WORKDIR}/yarn_offline_mirror\"" >> "${YARN_WORKDIR}/.yarnrc" || die
+		yarn install --offline --check-files || die
 	fi
-	cd "${YARN_WORKDIR}" || die
-	yarn install --offline --check-files || die
 
 	# GOMODCACHE has already been set to ${WORKDIR}/go-mod by go-module.eclass
 }
@@ -64,6 +62,15 @@ src_compile() {
 
 	cd "${S}/service" || die
 	ego build -ldflags "-X github.com/v2rayA/v2rayA/conf.Version='${PV}' -s -w" -o v2raya
+}
+
+src_test() {
+	# web gui (nodejs)
+	cd "${YARN_WORKDIR}" || die
+	yarn lint || die
+	# go service
+	cd "${S}/service" || die
+	ego test github.com/v2rayA/v2rayA/...
 }
 
 src_install() {
