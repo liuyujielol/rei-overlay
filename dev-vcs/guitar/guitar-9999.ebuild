@@ -29,9 +29,6 @@ RDEPEND="
 "
 BDEPEND="${RUBY_DEPS}"
 
-MY_PN="Guitar"
-#S="${WORKDIR}/${MY_PN}-${PV}"
-
 src_unpack() {
 	git-r3_src_unpack
 }
