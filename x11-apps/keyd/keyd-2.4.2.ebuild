@@ -26,10 +26,11 @@ BDEPEND="
 	man? ( app-text/scdoc )
 "
 
+PATCHES=(
+	"${FILESDIR}/fix-makefile.patch"
+)
+
 src_prepare() {
-	local PATCHES=(
-		"${FILESDIR}/fix-makefile.patch"
-	)
 	if use elibc_musl; then
 		PATCHES+=(
 			"${FILESDIR}/musl-time64.patch"
@@ -49,12 +50,9 @@ src_install() {
 	dobin bin/*
 
 	local DOCS=(
-		docs/CHANGELOG.md docs/DESIGN.md
+		docs/CHANGELOG.md docs/DESIGN.md examples
 	)
 	einstalldocs
-
-	insinto "/usr/share/doc/${P}/examples"
-	doins -r examples/*
 
 	insinto "/usr/share/keyd"
 	doins data/keyd.compose
@@ -69,6 +67,8 @@ src_install() {
 		gzip -d data/*.1.gz || die
 		doman data/keyd{,-application-mapper}.1
 	fi
+
+	keepdir /etc/keyd
 
 	systemd_dounit keyd.service
 	newinitd "${FILESDIR}/keyd.initd" keyd
