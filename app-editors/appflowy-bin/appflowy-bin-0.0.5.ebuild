@@ -5,13 +5,12 @@ EAPI=8
 
 inherit desktop xdg
 
-MY_PN="AppFlowy"
-MY_PV="${PV//beta1/beta.1}"
+MY_PN=AppFlowy
 
 DESCRIPTION="AppFlowy is an open-source alternative to Notion"
 HOMEPAGE="https://www.appflowy.io/"
 SRC_URI="
-	https://github.com/AppFlowy-IO/AppFlowy/releases/download/${MY_PV}/${MY_PN}-linux-x86.tar.gz -> ${P}.tar.gz
+	https://github.com/AppFlowy-IO/AppFlowy/releases/download/${PV}/${MY_PN}-linux-x86.tar.gz -> ${P}.tar.gz
 "
 
 LICENSE="AGPL-3"
@@ -22,6 +21,7 @@ DEPEND="
 	dev-libs/atk
 	dev-libs/glib:2
 	dev-libs/openssl
+	dev-libs/keybinder:3
 	media-libs/harfbuzz
 	media-libs/libepoxy
 	x11-libs/cairo
@@ -34,8 +34,8 @@ RDEPEND="${DEPEND}"
 RESTRICT=" strip "
 
 QA_PRESTRIPPED="
-	opt/${PN}/lib/libapp.so
-	opt/${PN}/lib/libflutter_linux_gtk.so
+	/opt/${PN}/lib/libapp.so
+	/opt/${PN}/lib/libflutter_linux_gtk.so
 "
 QA_PREBUILT="*"
 
