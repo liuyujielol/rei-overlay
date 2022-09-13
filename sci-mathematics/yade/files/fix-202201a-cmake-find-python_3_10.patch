@@ -1,0 +1,104 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index efec799da3d9c7514c4956ef9f06a3332488ca4d..57519076db69fde43988728666b1d9b92d40d13a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -257,7 +257,7 @@ INCLUDE(FindMissingVersions)
+ SET(Boost_NO_BOOST_CMAKE ON)  # solved issues on HPC/Nix, see https://github.com/YosysHQ/nextpnr/issues/322#issuecomment-536177724
+ INCLUDE(YadePythonHelpers)
+ 
+-SET(PY3_VERSIONS 3.9 3.8 3.7 3.6 3.5 3.4 3.3 3.2 3.1 3.0) #append newer python versions at the beginning here.
++SET(PY3_VERSIONS 3.10 3.9 3.8 3.7 3.6 3.5 3.4 3.3 3.2 3.1 3.0) #append newer python versions at the beginning here.
+ SET(PY2_VERSIONS 2.7 2.6)
+ 
+ IF (DEFINED PYTHON_EXECUTABLE)
+diff --git a/cMake/FindCLP.cmake b/cMake/FindCLP.cmake
+index 1e9cf2aaa4b42239deb942eb08f07f3b16eedc3a..b108930fc4fbf8c7a60c3534f81858c737345bed 100644
+--- a/cMake/FindCLP.cmake
++++ b/cMake/FindCLP.cmake
+@@ -4,16 +4,19 @@ ELSE(CLP_INCLUDE_DIR AND CLP2_INCLUDE_DIR AND CLP_LIBRARY AND CLP2_LIBRARY AND C
+ 	FIND_LIBRARY(CLP_LIBRARY NAMES Clp 
+ 		PATHS
+ 		/usr/lib/x86_64-linux-gnu
++		/usr/lib
+ 	    )
+ 
+ 	FIND_LIBRARY(CLP2_LIBRARY NAMES OsiClp 
+ 		PATHS
+ 		/usr/lib/x86_64-linux-gnu
++		/usr/lib
+ 	    )
+ 
+ 	FIND_LIBRARY(CLP3_LIBRARY NAMES CoinUtils
+ 		PATHS
+ 		/usr/lib/x86_64-linux-gnu
++		/usr/lib
+ 	    )
+ 
+ 
+@@ -27,6 +30,7 @@ ELSE(CLP_INCLUDE_DIR AND CLP2_INCLUDE_DIR AND CLP_LIBRARY AND CLP2_LIBRARY AND C
+ 	      CLP2_INCLUDE_DIR coinutils.pc
+ 	    PATHS
+ 	      /usr/lib/x86_64-linux-gnu/pkgconfig
++	      /usr/lib/pkgconfig
+ 	    )
+     
+     IF(CLP_INCLUDE_DIR AND CLP2_INCLUDE_DIR AND CLP_LIBRARY AND CLP2_LIBRARY AND CLP3_LIBRARY)
+diff --git a/cMake/FindCuBlas.cmake b/cMake/FindCuBlas.cmake
+index 907f4c7ebbaf72065ecd8220eaebde4c395812b9..7fac71309f0c83d18b9d667bdba2c311aa05fb3d 100644
+--- a/cMake/FindCuBlas.cmake
++++ b/cMake/FindCuBlas.cmake
+@@ -4,8 +4,8 @@
+ #  CUBBLAS_LIBRARY, libraries to link against to use Cublas.
+ #  CUBLAS_FOUND, If false, do not try to use Cublas.
+ 
+-FIND_LIBRARY(CUBLAS_LIBRARY NAMES cublas libcublas PATHS /usr/local/cuda/lib64 )
+-FIND_LIBRARY(CUDART_LIBRARY NAMES cudart libcudart PATHS /usr/local/cuda/lib64 )
++FIND_LIBRARY(CUBLAS_LIBRARY NAMES cublas libcublas PATHS /usr/local/cuda/lib64 /opt/cuda/lib64 )
++FIND_LIBRARY(CUDART_LIBRARY NAMES cudart libcudart PATHS /usr/local/cuda/lib64 /opt/cuda/lib64 )
+ 
+ # handle the QUIETLY and REQUIRED arguments and set LOKI_FOUND to TRUE if
+ # all listed variables are TRUE
+diff --git a/cMake/FindMissingVersions.cmake b/cMake/FindMissingVersions.cmake
+index cbb4ff5b73021cbfd086a80dfe7f4bde70638a8f..0cbed4438ff41fd929ab22f0aecccb606365b43e 100644
+--- a/cMake/FindMissingVersions.cmake
++++ b/cMake/FindMissingVersions.cmake
+@@ -29,7 +29,7 @@ message( STATUS "Architecture: ${ARCHITECTURE}" )
+ 
+ IF(ENABLE_GUI)
+ FIND_PACKAGE(GLUT)
+-find_path(FORCE_FREEGLUT_PATH freeglut_std.h ${GLUT_INCLUDE_DIR}/GL)
++find_path(FORCE_FREEGLUT_PATH freeglut_std.h ${GLUT_INCLUDE_DIR}/GL "/usr/include/GL")
+ message(STATUS "Found freeglut: ${FORCE_FREEGLUT_PATH}")
+ 
+ execute_process(COMMAND "/usr/bin/md5sum" "${FORCE_FREEGLUT_PATH}/freeglut_std.h"
+diff --git a/cMake/YadePythonHelpers.cmake b/cMake/YadePythonHelpers.cmake
+index 0267a52197c662e95dcd9d2df7cfb9259b9aa44b..dc5e9b1e306f26a5f4b4d6516bd0f80f53f73031 100644
+--- a/cMake/YadePythonHelpers.cmake
++++ b/cMake/YadePythonHelpers.cmake
+@@ -140,19 +140,17 @@ ENDFUNCTION(FIND_PYTHON_PACKAGES)
+ # Did findpythoninterp found the python version we want ? Output in PYTHON_VERSION_MATCH.
+ FUNCTION(PYTHON_VERSION_MATCHES version_number)
+ 	SET(PYTHON_VERSION_MATCH FALSE PARENT_SCOPE)
+-	STRING(REGEX MATCHALL "[^\\.]" numbers_list ${version_number})
+-	list(LENGTH numbers_list numbers_list_len)
++	string(REGEX MATCH "([0-9]+)\\.([0-9]+)" _ ${version_number})
++	set(ver_major ${CMAKE_MATCH_1})
++	set(ver_minor ${CMAKE_MATCH_2})
++	MESSAGE("Trying python version: " ${version_number} " parsed as " ${ver_major} " " ${ver_minor})
+ 
+-	LIST(GET numbers_list 0 major)
+-	IF(NOT (${PYTHON_VERSION_MAJOR} EQUAL ${major}))
++	IF(NOT (${PYTHON_VERSION_MAJOR} EQUAL ${ver_major}))
+ 		RETURN()
+ 	ENDIF()
+ 
+-	IF(${numbers_list_len} GREATER 1)
+-		LIST(GET numbers_list 1 minor)
+-		IF(NOT(${PYTHON_VERSION_MINOR} EQUAL ${minor}))
+-			RETURN()
+-		ENDIF()
++	IF(NOT(${PYTHON_VERSION_MINOR} EQUAL ${ver_minor}))
++		RETURN()
+ 	ENDIF()
+ 	#if we are here we match major and minor
+ 	SET(PYTHON_VERSION_MATCH TRUE PARENT_SCOPE)
