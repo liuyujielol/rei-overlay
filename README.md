@@ -14,6 +14,10 @@ overlay for testing only
 │   ├── cpeditor
 │   ├── lapce
 │   └── zee
+├── dev-python
+│   └── PyQt5
+├── dev-qt
+│   └── qtwebkit
 ├── dev-util
 │   └── xmake
 ├── dev-vcs
@@ -34,11 +38,13 @@ overlay for testing only
 ├── net-proxy
 │   └── v2rayA
 ├── profiles
+├── sci-mathematics
+│   └── yade
 ├── scripts
 ├── www-apps
 │   └── openvscode-server-bin
 └── x11-apps
     └── keyd
 
-34 directories
+40 directories
 ```
