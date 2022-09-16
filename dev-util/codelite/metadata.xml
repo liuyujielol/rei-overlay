@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!--maintainer-needed-->
+	<use>
+		<flag name="clang">Use Clang compiler instead of GCC</flag>
+		<flag name="pch">Enable Pre Compiled Header</flag>
+		<flag name="nativebook">Use native Notebook on GTK</flag>
+		<flag name="sftp">Build with SFTP support</flag>
+		<flag name="lldb">Build or link to the lldb debugger</flag>
+		<flag name="php">Build CodeLite for PHP / WEB languages without any C++ plugins</flag>
+	</use>
+</pkgmetadata>
