@@ -19,6 +19,7 @@ overlay for testing only
 ├── dev-qt
 │   └── qtwebkit
 ├── dev-util
+│   ├── codelite
 │   └── xmake
 ├── dev-vcs
 │   └── guitar
@@ -46,5 +47,5 @@ overlay for testing only
 └── x11-apps
     └── keyd
 
-40 directories
+41 directories
 ```
