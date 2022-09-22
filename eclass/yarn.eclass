@@ -56,7 +56,7 @@ BDEPEND="
 	sys-apps/yarn
 "
 
-# @ECLASS-VARIABLE: EYARN_LOCK
+# @ECLASS_VARIABLE: EYARN_LOCK
 # @REQUIRED
 # @DESCRIPTION:
 # This is an array based on yarn.lock file content
@@ -64,24 +64,24 @@ BDEPEND="
 # e.g.:
 # sed -r -n -e 's/^[ ]*resolved \"(.*)\#.*\"$/\1/g; s/https:\/\/registry.yarnpkg.com\//\0/g; s/https:\/\/registry.yarnpkg.com\///p' yarn.lock | sort | uniq | sed 's/\(.*\)/"\1"/g'
 
-# @ECLASS-VARIABLE: EYARN_LOCK_SRC_URI
+# @ECLASS_VARIABLE: EYARN_LOCK_SRC_URI
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Coverted real src_uri and corresponding filename.
 
-# @ECLASS-VARIABLE: _YARN_RESOLVED_MAP
+# @ECLASS_VARIABLE: _YARN_RESOLVED_MAP
 # @INTERNAL
 # @DESCRIPTION:
 # Variable for recording whether a distfile belongs to yarn.
 declare -A -g _YARN_RESOLVED_MAP
 
-# @ECLASS-VARIABLE: _YARN_OFFLINE_MIRROR
+# @ECLASS_VARIABLE: _YARN_OFFLINE_MIRROR
 # @INTERNAL
 # @DESCRIPTION:
 # The temporary offline mirror directory for YARN
 _YARN_OFFLINE_MIRROR="${T}/yarn-mirror/"
 
-# @ECLASS-VARIABLE: YARN_WORKDIR
+# @ECLASS_VARIABLE: YARN_WORKDIR
 # @DESCRIPTION:
 # The source file directory for yarn to work with
 # By default sets to ${S}
