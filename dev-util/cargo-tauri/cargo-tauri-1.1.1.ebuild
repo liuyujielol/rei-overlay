@@ -377,7 +377,7 @@ CRATES="
 
 inherit cargo
 
-DESCRIPTION="Build smaller, faster, and more secure desktop applications with a web frontend"
+DESCRIPTION="Command line interface for building Tauri apps"
 HOMEPAGE="https://tauri.app/"
 SRC_URI="
 	https://github.com/tauri-apps/tauri/archive/refs/tags/tauri-v${PV}.tar.gz
