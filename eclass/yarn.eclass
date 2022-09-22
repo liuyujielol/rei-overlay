@@ -118,6 +118,11 @@ yarn_set_globals() {
 		_YARN_RESOLVED_MAP["${_distfile}"]=1
 	done
 
+	# Ensure these variables are not changed past this point
+	readonly EYARN_LOCK
+	readonly EYARN_LOCK_SRC_URI
+	readonly _YARN_RESOLVED_MAP
+
 	_YARN_SET_GLOBALS_CALLED=1
 }
 
