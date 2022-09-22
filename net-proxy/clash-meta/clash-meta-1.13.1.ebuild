@@ -461,6 +461,8 @@ BDEPEND="
 	>=dev-lang/go-1.19:*
 "
 
+S="${WORKDIR}/Clash.Meta-${PV}"
+
 src_compile() {
 	local Version=${PV} BuildTime=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
 	local ldflags="\
