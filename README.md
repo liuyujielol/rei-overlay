@@ -19,6 +19,7 @@ overlay for testing only
 ├── dev-qt
 │   └── qtwebkit
 ├── dev-util
+│   ├── cargo-tauri
 │   ├── codelite
 │   └── xmake
 ├── dev-vcs
@@ -26,6 +27,8 @@ overlay for testing only
 ├── eclass
 ├── kde-misc
 │   └── plasma-applet-netspeed-widget
+├── media-libs
+│   └── libvips
 ├── media-plugins
 │   └── osdlyrics
 ├── media-sound
@@ -37,6 +40,9 @@ overlay for testing only
 │   ├── prips
 │   └── termscp
 ├── net-proxy
+│   ├── clash
+│   ├── clash-meta
+│   ├── clash-verge
 │   └── v2rayA
 ├── profiles
 ├── sci-mathematics
@@ -47,5 +53,5 @@ overlay for testing only
 └── x11-apps
     └── keyd
 
-41 directories
+47 directories
 ```
