@@ -907,7 +907,7 @@ src_install() {
 	dobin src-tauri/target/release/clash-verge
 
 	insinto "/usr/lib/${PN}/resources"
-	doins "${DISTDIR}/clash-country-${MMDB_V}.mmdb"
+	doins src-tauri/target/release/resources/Country.mmdb
 
 	newicon -s 32 src-tauri/icons/32x32.png clash-verge.png
 	newicon -s 128 src-tauri/icons/128x128.png clash-verge.png
