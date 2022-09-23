@@ -858,6 +858,23 @@ PATCHES=(
 	"${FILESDIR}/${P}-disable-release-bundle-creation.patch"
 )
 
+pkg_pretend() {
+	if [[ -z "${REPLACING_VERSIONS}" ]]; then
+		npmmirrorset=0
+		if [[ -e "${ROOT}"/etc/portage/mirrors ]]; then
+			grep '^\s*yarn\s' "${ROOT}"/etc/portage/mirrors >/dev/null 2>&1
+			if [[ $? -eq 0 ]]; then
+				npmmirrorset=1
+			fi
+		fi
+		if [[ ${npmmirrorset} -eq 0 ]]; then
+			ewarn "You may need to set a yarn mirror for fetching yarn packages"
+			ewarn "  echo -e '\\\\nyarn https://registry.npmmirror.com/' >> /etc/portage/mirrors"
+			ewarn "Can safely ignore this warning if emerge succeeded."
+		fi
+	fi
+}
+
 src_unpack() {
 	unpack "${P}.tar.gz"
 
