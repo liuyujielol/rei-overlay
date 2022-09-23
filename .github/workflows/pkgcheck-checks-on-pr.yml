@@ -30,7 +30,7 @@ jobs:
           fetch-depth: 0
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: ${{ github.event.pull_request.head.sha }}
-          path: gentoo-zh
+          path: rei-overlay
       - name: Get the base commit
         id: basecommit
         shell: bash
@@ -67,20 +67,20 @@ jobs:
           THEBASEREF: ${{ steps.basecommit.outputs.sha }}
         run: |
           set -e
-          mv ${GITHUB_WORKSPACE}/gentoo-zh /var/db/repos/
-          cat /var/db/repos/gentoo-zh/profiles/arch/amd64/no-multilib/package.mask >> /var/db/repos/gentoo/profiles/arch/amd64/no-multilib/package.mask
-          cat /var/db/repos/gentoo-zh/profiles/arch/amd64/x32/package.mask >> /var/db/repos/gentoo/profiles/arch/amd64/x32/package.mask
+          mv ${GITHUB_WORKSPACE}/rei-overlay /var/db/repos/
+          cat /var/db/repos/rei-overlay/profiles/arch/amd64/no-multilib/package.mask >> /var/db/repos/gentoo/profiles/arch/amd64/no-multilib/package.mask
+          cat /var/db/repos/rei-overlay/profiles/arch/amd64/x32/package.mask >> /var/db/repos/gentoo/profiles/arch/amd64/x32/package.mask
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
-          pushd /var/db/repos/gentoo && git commit -am"profiles/*: append mask form ::gentoo-zh" && popd
+          pushd /var/db/repos/gentoo && git commit -am"profiles/*: append mask form ::rei-overlay" && popd
           mkdir -p /etc/portage/repos.conf
           echo "[gentoo]
           location = /var/db/repos/gentoo
           " >/etc/portage/repos.conf/gentoo.conf
-          echo "[gentoo-zh]
-          location = /var/db/repos/gentoo-zh
-          " >/etc/portage/repos.conf/gentoo-zh.conf
-          cd /var/db/repos/gentoo-zh
+          echo "[rei-overlay]
+          location = /var/db/repos/rei-overlay
+          " >/etc/portage/repos.conf/rei-overlay.conf
+          cd /var/db/repos/rei-overlay
           echo "git diff --raw ${THEBASEREF}"
           git diff --raw ${THEBASEREF}
           diff_files=$(git diff --raw --name-only ${THEBASEREF})
@@ -147,7 +147,7 @@ jobs:
               cat /var/tmp/report.txt >>/var/tmp/report.md
               echo '```' >>/var/tmp/report.md
             else
-              cd /var/db/repos/gentoo-zh || true
+              cd /var/db/repos/rei-overlay || true
               commit_id=$(git rev-list -n1 HEAD | cut -b1-7)
               cat <<EOF >>/var/tmp/report.md
           * _the report is too long, can be downloaded from **Artifacts** list of the current run:
