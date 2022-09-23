@@ -26,7 +26,7 @@ use_latest_release = true
 
 ["dev-util/cargo-tauri"]
 source = "github"
-github = "https://github.com/tauri-apps/tauri"
+github = "tauri-apps/tauri"
 use_latest_release = true
 prefix = "tauri-v"
 
