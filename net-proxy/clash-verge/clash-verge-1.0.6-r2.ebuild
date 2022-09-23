@@ -844,6 +844,7 @@ DEPEND="
 	net-proxy/clash-meta
 	dev-libs/libappindicator
 	net-libs/webkit-gtk:4
+	x11-libs/gtk+:3
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
