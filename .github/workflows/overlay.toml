@@ -35,13 +35,6 @@ source = "github"
 github = "eranif/codelite"
 use_latest_release = true
 
-["dev-util/rust-analyzer"]
-source = "github"
-github = "rust-analyzer/rust-analyzer"
-use_latest_release = true
-from_pattern = "(\\d+)-(\\d+)-(\\d+)"
-to_pattern = "\\1\\2\\3"
-
 ["dev-util/xmake"]
 source = "github"
 github = "xmake-io/xmake"
