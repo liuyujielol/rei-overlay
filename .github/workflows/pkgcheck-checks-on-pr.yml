@@ -79,7 +79,7 @@ jobs:
           echo "git diff --raw ${THEBASEREF}"
           git diff --raw ${THEBASEREF}
           diff_files=$(git diff --raw --name-only ${THEBASEREF})
-          cates=$(cat /var/db/repos/gentoo{,-zh}/profiles/categories | sort -du)
+          cates=$(cat /var/db/repos/{gentoo,rei-overlay}/profiles/categories | sort -du)
           declare -a check_pkgs
           for file in ${diff_files}; do
             c=${file%%/*}
