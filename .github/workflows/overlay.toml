@@ -111,10 +111,11 @@ github = "v2rayA/v2rayA"
 use_latest_release = true
 prefix = "v"
 
-["sci-mathematics/yade"]
-source = "gitlab"
-gitlab = "yade-dev/trunk"
-use_latest_release = true
+# TODO
+# ["sci-mathematics/yade"]
+# source = "gitlab"
+# gitlab = "yade-dev/trunk"
+# use_latest_release = true
 
 ["www-apps/openvscode-server-bin"]
 source = "github"
