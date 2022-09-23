@@ -825,7 +825,7 @@ yarn_set_globals
 DESCRIPTION="A Clash GUI based on tauri"
 HOMEPAGE="https://github.com/zzzgydi/clash-verge"
 
-MMDB_V="20220512"
+MMDB_V="20220912"
 
 SRC_URI="
 	https://github.com/zzzgydi/clash-verge/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
