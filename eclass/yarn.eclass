@@ -39,10 +39,14 @@
 # ...
 # }
 #
-# src_prepare(){
+# src_prepare() {
 #	default
 #	yarn_offline_install
 # ...
+# }
+#
+# src_compile() {
+#	eyarn build
 # }
 #
 # @CODE
