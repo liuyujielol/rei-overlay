@@ -122,7 +122,7 @@ _YARN_OFFLINE_MIRROR="${T}/yarn-mirror/"
 # @DESCRIPTION:
 # The source file directory for yarn to work with
 # By default sets to ${S}
-: "${YARN_WORKDIR:=${S}}"
+YARN_WORKDIR="${S}"
 
 # @FUNCTION: eyarn
 # @USAGE: [<args>...]
@@ -143,7 +143,6 @@ eyarn() {
 yarn_gen_config() {
 	debug-print-function "${FUNCNAME}" "$@"
 
-	[[ ${YARN_WORKDIR} ]] && die "YARN_WORKDIR is not set when it should be"
 	[[ ! -d "${YARN_WORKDIR}" ]] && die "YARN_WORKDIR: ${YARN_WORKDIR} does not exist"
 
 	# set yarn-offline-mirror
@@ -180,17 +179,16 @@ yarn_set_globals() {
 	_YARN_SET_GLOBALS_CALLED=1
 }
 
-# @FUNCTION: yarn_live_src_unpack
+# @FUNCTION: yarn_live_fetch
 # @DESCRIPTION:
 # NOTE: YARN_WORKDIR must have been set and must exist
 # Runs 'yarn install' and downloaded pkgs for offline use, used in live ebuilds
-yarn_live_src_unpack() {
+yarn_live_fecth() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	[[ "${PV}" == *9999* ]] || die "${FUNCNAME} only allowed in live/9999 ebuilds"
 	[[ "${EBUILD_PHASE}" == unpack ]] || die "${FUNCNAME} only allowed in src_unpack"
 
-	[[ ${YARN_WORKDIR} ]] && die "YARN_WORKDIR is not set when it should be"
 	[[ ! -d "${YARN_WORKDIR}" ]] && die "YARN_WORKDIR: ${YARN_WORKDIR} does not exist"
 
 	local distdir=${PORTAGE_ACTUAL_DISTDIR:-${DISTDIR}}
@@ -272,7 +270,6 @@ yarn_set_offline_mirror() {
 yarn_offline_install() {
 	debug-print-function "${FUNCNAME}" "$@"
 
-	[[ ${YARN_WORKDIR} ]] && die "YARN_WORKDIR is not set when it should be"
 	[[ ! -d "${YARN_WORKDIR}" ]] && die "YARN_WORKDIR: ${YARN_WORKDIR} does not exist"
 
 	if [[ ! ${_YARN_GEN_CONFIG_CALLED} ]]; then
