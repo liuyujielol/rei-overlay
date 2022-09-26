@@ -1,0 +1,26 @@
+---
+ src-tauri/tauri.conf.json | 4 +-
+ 1 file changed, 2 insertion(+), 2 deletion(-)
+
+--- a/src-tauri/tauri.conf.json
++++ b/src-tauri/tauri.conf.json
+@@ -15,7 +15,7 @@
+       "iconAsTemplate": true
+     },
+     "bundle": {
+-      "active": true,
++      "active": false,
+       "targets": "all",
+       "identifier": "top.gydi.clashverge",
+       "icon": [
+@@ -28,10 +28,6 @@
+       "resources": [
+         "resources"
+       ],
+-      "externalBin": [
+-        "sidecar/clash",
+-        "sidecar/clash-meta"
+-      ],
+       "copyright": "© 2022 zzzgydi All Rights Reserved",
+       "category": "DeveloperTool",
+       "shortDescription": "A Clash GUI based on tauri.",

@@ -8,46 +8,48 @@ CRATES="
 	adler-1.0.2
 	adler32-1.2.0
 	ahash-0.7.6
-	aho-corasick-0.7.18
-	alloc-no-stdlib-2.0.3
-	alloc-stdlib-0.2.1
+	aho-corasick-0.6.10
+	aho-corasick-0.7.19
+	alloc-no-stdlib-2.0.4
+	alloc-stdlib-0.2.2
+	android_system_properties-0.1.5
 	ansi_term-0.12.1
-	anyhow-1.0.58
-	arc-swap-1.5.0
-	async-channel-1.6.1
+	anyhow-1.0.65
+	arc-swap-1.5.1
+	async-channel-1.7.1
 	async-executor-1.4.1
-	async-fs-1.5.0
-	async-io-1.7.0
+	async-fs-1.6.0
+	async-io-1.9.0
 	async-lock-2.5.0
-	async-net-1.6.1
-	async-process-1.4.0
+	async-net-1.7.0
+	async-process-1.5.0
 	async-task-4.3.0
-	async-trait-0.1.56
+	async-trait-0.1.57
 	atk-0.15.1
 	atk-sys-0.15.1
 	atomic-waker-1.0.0
-	attohttpc-0.19.1
-	auto-launch-0.3.0
+	attohttpc-0.22.0
+	auto-launch-0.4.0
 	autocfg-1.1.0
 	backtrace-0.3.66
 	base64-0.13.0
 	bitflags-1.3.2
 	block-0.1.6
 	block-buffer-0.9.0
-	block-buffer-0.10.2
+	block-buffer-0.10.3
 	blocking-1.2.0
 	brotli-3.3.4
 	brotli-decompressor-2.3.2
 	bstr-0.2.17
 	buf_redux-0.8.4
-	bumpalo-3.10.0
-	bytemuck-1.10.0
+	bumpalo-3.11.0
+	bytemuck-1.12.1
 	byteorder-1.4.3
-	bytes-1.1.0
+	bytes-1.2.1
 	cache-padded-1.2.0
 	cairo-rs-0.15.12
 	cairo-sys-rs-0.15.1
-	cargo_toml-0.11.5
+	cargo_toml-0.11.6
 	cc-1.0.73
 	cesu8-1.1.0
 	cfb-0.6.1
@@ -55,27 +57,30 @@ CRATES="
 	cfg-expr-0.10.3
 	cfg-if-0.1.10
 	cfg-if-1.0.0
-	chrono-0.4.19
+	chrono-0.4.22
 	cocoa-0.24.0
 	cocoa-foundation-0.1.0
 	color_quant-1.1.0
-	combine-4.6.4
+	combine-4.6.6
 	concat-idents-1.1.3
-	concurrent-queue-1.2.2
+	concurrent-queue-1.2.4
 	convert_case-0.4.0
 	core-foundation-0.9.3
 	core-foundation-sys-0.8.3
 	core-graphics-0.22.3
 	core-graphics-types-0.1.1
-	cpufeatures-0.2.2
+	cpufeatures-0.2.5
 	crc32fast-1.3.2
 	cron_clock-0.8.0
-	crossbeam-channel-0.5.5
-	crossbeam-utils-0.8.10
+	crossbeam-channel-0.5.6
+	crossbeam-deque-0.8.2
+	crossbeam-epoch-0.9.10
+	crossbeam-utils-0.8.11
 	crypto-common-0.1.6
 	cssparser-0.27.2
 	cssparser-macros-0.6.0
-	ctor-0.1.22
+	ctor-0.1.23
+	ctrlc-3.2.3
 	cty-0.2.2
 	darling-0.13.4
 	darling_core-0.13.4
@@ -83,12 +88,11 @@ CRATES="
 	dashmap-4.0.2
 	deelevate-0.2.0
 	deflate-0.7.20
-	deflate-1.0.0
 	delay_timer-0.11.3
 	derivative-2.2.0
 	derive_more-0.99.17
 	digest-0.9.0
-	digest-0.10.3
+	digest-0.10.5
 	dirs-2.0.2
 	dirs-4.0.0
 	dirs-next-2.0.0
@@ -98,13 +102,12 @@ CRATES="
 	dtoa-0.4.8
 	dtoa-short-0.3.3
 	dunce-1.0.2
-	either-1.7.0
-	embed-resource-1.7.2
+	either-1.8.0
 	embed_plist-1.2.2
 	encoding_rs-0.8.31
-	event-listener-2.5.2
+	event-listener-2.5.3
 	failure-0.1.8
-	fastrand-1.7.0
+	fastrand-1.8.0
 	field-offset-0.3.4
 	filedescriptor-0.8.2
 	filetime-0.2.17
@@ -112,26 +115,26 @@ CRATES="
 	fnv-1.0.7
 	foreign-types-0.3.2
 	foreign-types-shared-0.1.1
-	form_urlencoded-1.0.1
+	form_urlencoded-1.1.0
 	futf-0.1.5
-	futures-0.3.21
-	futures-channel-0.3.21
-	futures-core-0.3.21
-	futures-executor-0.3.21
-	futures-io-0.3.21
+	futures-0.3.24
+	futures-channel-0.3.24
+	futures-core-0.3.24
+	futures-executor-0.3.24
+	futures-io-0.3.24
 	futures-lite-1.12.0
-	futures-macro-0.3.21
-	futures-sink-0.3.21
-	futures-task-0.3.21
-	futures-util-0.3.21
+	futures-macro-0.3.24
+	futures-sink-0.3.24
+	futures-task-0.3.24
+	futures-util-0.3.24
 	fxhash-0.2.1
 	gdk-0.15.4
 	gdk-pixbuf-0.15.11
 	gdk-pixbuf-sys-0.15.10
 	gdk-sys-0.15.1
 	gdkx11-sys-0.15.1
-	generator-0.7.0
-	generic-array-0.14.5
+	generator-0.7.1
+	generic-array-0.14.6
 	getrandom-0.1.16
 	getrandom-0.2.7
 	gimli-0.26.2
@@ -146,10 +149,10 @@ CRATES="
 	gtk-0.15.5
 	gtk-sys-0.15.3
 	gtk3-macros-0.15.4
-	h2-0.3.13
-	hashbrown-0.11.2
-	hashbrown-0.12.2
-	headers-0.3.7
+	h2-0.3.14
+	handlebars-0.29.1
+	hashbrown-0.12.3
+	headers-0.3.8
 	headers-core-0.2.0
 	heck-0.3.3
 	heck-0.4.0
@@ -159,44 +162,47 @@ CRATES="
 	http-0.2.8
 	http-body-0.4.5
 	http-range-0.1.5
-	httparse-1.7.1
+	httparse-1.8.0
 	httpdate-1.0.2
 	humantime-2.1.0
 	hyper-0.14.20
 	hyper-tls-0.5.0
+	iana-time-zone-0.1.48
 	ico-0.1.0
 	ident_case-1.0.1
-	idna-0.2.3
+	idna-0.3.0
 	ignore-0.4.18
-	image-0.24.2
+	image-0.24.3
 	indexmap-1.9.1
 	infer-0.7.0
 	inflate-0.3.4
 	instant-0.1.12
+	interfaces-0.0.8
 	ipnet-2.5.0
 	itoa-0.4.8
-	itoa-1.0.2
+	itoa-1.0.3
 	javascriptcore-rs-0.16.0
 	javascriptcore-rs-sys-0.4.0
-	jni-0.18.0
 	jni-0.19.0
 	jni-sys-0.3.0
-	js-sys-0.3.58
+	js-sys-0.3.60
 	json-patch-0.2.6
 	kuchiki-0.8.1
+	lazy_static-0.2.11
 	lazy_static-1.4.0
 	libappindicator-0.7.1
 	libappindicator-sys-0.7.3
-	libc-0.2.126
+	libc-0.2.133
 	libloading-0.7.3
 	line-wrap-0.1.1
 	linked-hash-map-0.5.6
-	lock_api-0.4.7
+	lock_api-0.4.8
+	log-0.3.9
 	log-0.4.17
 	log-mdc-0.1.0
 	log4rs-1.1.1
 	loom-0.5.6
-	lru-0.7.7
+	lru-0.7.8
 	mac-0.1.1
 	malloc_buf-0.0.6
 	markup5ever-0.10.1
@@ -209,7 +215,7 @@ CRATES="
 	mime_guess-2.0.4
 	minimal-lexical-0.2.1
 	minisign-verify-0.2.1
-	miniz_oxide-0.5.3
+	miniz_oxide-0.5.4
 	mio-0.8.4
 	multipart-0.18.0
 	nanoid-0.4.0
@@ -218,9 +224,12 @@ CRATES="
 	ndk-context-0.1.1
 	ndk-sys-0.3.0
 	new_debug_unreachable-1.0.4
+	nix-0.23.1
+	nix-0.25.0
 	nodrop-0.1.14
 	nom-5.1.2
 	nom-7.1.1
+	ntapi-0.3.7
 	num-derive-0.3.3
 	num-integer-0.1.45
 	num-iter-0.1.43
@@ -235,10 +244,9 @@ CRATES="
 	objc_exception-0.1.2
 	objc_id-0.1.1
 	object-0.29.0
-	once_cell-1.13.0
+	once_cell-1.14.0
 	opaque-debug-0.3.0
-	open-2.1.3
-	open-3.0.1
+	open-3.0.3
 	openssl-0.10.41
 	openssl-macros-0.1.0
 	openssl-probe-0.1.5
@@ -248,15 +256,14 @@ CRATES="
 	pango-0.15.10
 	pango-sys-0.15.10
 	parking-2.0.0
-	parking_lot-0.11.2
 	parking_lot-0.12.1
-	parking_lot_core-0.8.5
 	parking_lot_core-0.9.3
-	paste-1.0.7
+	paste-1.0.9
 	pathdiff-0.2.1
 	pathsearch-0.2.0
-	percent-encoding-2.1.0
-	pest-2.1.3
+	percent-encoding-2.2.0
+	pest-0.3.3
+	pest-2.3.1
 	phf-0.8.0
 	phf-0.10.1
 	phf_codegen-0.8.0
@@ -266,82 +273,87 @@ CRATES="
 	phf_macros-0.10.0
 	phf_shared-0.8.0
 	phf_shared-0.10.0
-	pin-project-1.0.11
-	pin-project-internal-1.0.11
+	pin-project-1.0.12
+	pin-project-internal-1.0.12
 	pin-project-lite-0.2.9
 	pin-utils-0.1.0
 	pkg-config-0.3.25
 	plist-1.3.1
 	png-0.11.0
-	png-0.17.5
-	polling-2.2.0
+	png-0.17.6
+	polling-2.3.0
 	port_scanner-0.1.5
 	ppv-lite86-0.2.16
 	precomputed-hash-0.1.1
-	proc-macro-crate-1.1.3
+	proc-macro-crate-1.2.1
 	proc-macro-error-1.0.4
 	proc-macro-error-attr-1.0.4
 	proc-macro-hack-0.5.19
-	proc-macro2-1.0.40
+	proc-macro2-1.0.43
 	quick-error-1.2.3
-	quote-1.0.20
+	quote-1.0.21
 	rand-0.7.3
 	rand-0.8.5
 	rand_chacha-0.2.2
 	rand_chacha-0.3.1
 	rand_core-0.5.1
-	rand_core-0.6.3
+	rand_core-0.6.4
 	rand_hc-0.2.0
 	rand_pcg-0.2.1
-	raw-window-handle-0.4.3
-	redox_syscall-0.2.13
+	raw-window-handle-0.5.0
+	rayon-1.5.3
+	rayon-core-1.9.3
+	redox_syscall-0.2.16
 	redox_users-0.4.3
+	regex-0.2.11
 	regex-1.6.0
 	regex-automata-0.1.10
+	regex-syntax-0.5.6
 	regex-syntax-0.6.27
 	remove_dir_all-0.5.3
 	reqwest-0.11.11
-	rfd-0.9.1
-	rquickjs-0.1.6
-	rquickjs-core-0.1.6
-	rquickjs-sys-0.1.6
+	rfd-0.10.0
+	rquickjs-0.1.7
+	rquickjs-core-0.1.7
+	rquickjs-sys-0.1.7
 	rs-snowflake-0.6.0
 	runas-0.2.1
 	rustc-demangle-0.1.21
 	rustc_version-0.2.3
 	rustc_version-0.3.3
 	rustc_version-0.4.0
-	rustversion-1.0.8
-	ryu-1.0.10
+	rustversion-1.0.9
+	ryu-1.0.11
 	safemem-0.3.3
 	same-file-1.0.6
 	schannel-0.1.20
 	scoped-tls-1.0.0
 	scopeguard-1.1.0
-	security-framework-2.6.1
+	security-framework-2.7.0
 	security-framework-sys-2.6.1
 	selectors-0.22.0
 	semver-0.9.0
 	semver-0.11.0
-	semver-1.0.12
+	semver-1.0.14
 	semver-parser-0.7.0
 	semver-parser-0.10.2
-	serde-1.0.139
+	serde-1.0.144
 	serde-value-0.7.0
-	serde_derive-1.0.139
-	serde_json-1.0.82
-	serde_repr-0.1.8
+	serde_derive-1.0.144
+	serde_json-1.0.85
+	serde_repr-0.1.9
 	serde_urlencoded-0.7.1
 	serde_with-1.14.0
 	serde_with_macros-1.5.2
 	serde_yaml-0.8.26
+	serde_yaml-0.9.13
 	serialize-to-javascript-0.1.1
 	serialize-to-javascript-impl-0.1.1
 	servo_arc-0.1.1
 	sha-1-0.9.8
-	sha-1-0.10.0
+	sha1-0.10.5
 	sha2-0.9.9
-	sha2-0.10.2
+	sha2-0.10.6
 	sharded-slab-0.1.4
 	shared_child-1.0.0
 	shared_library-0.1.9
@@ -349,10 +361,10 @@ CRATES="
 	signal-hook-0.3.14
 	signal-hook-registry-1.4.0
 	siphasher-0.3.10
-	slab-0.4.6
+	slab-0.4.7
 	smallvec-1.9.0
 	smol-1.2.5
-	socket2-0.4.4
+	socket2-0.4.7
 	soup2-0.2.1
 	soup2-sys-0.2.0
 	stable_deref_trait-1.2.0
@@ -360,46 +372,49 @@ CRATES="
 	string_cache-0.8.4
 	string_cache_codegen-0.5.2
 	strsim-0.10.0
-	syn-1.0.98
+	syn-1.0.100
+	sysinfo-0.26.2
+	sysproxy-0.1.0
 	system-deps-5.0.0
 	system-deps-6.0.2
-	tao-0.12.1
+	tao-0.14.0
 	tar-0.4.38
-	tauri-1.0.4
-	tauri-build-1.0.4
-	tauri-codegen-1.0.4
-	tauri-macros-1.0.4
-	tauri-runtime-0.10.2
-	tauri-runtime-wry-0.10.2
-	tauri-utils-1.0.3
+	tauri-1.1.1
+	tauri-build-1.1.1
+	tauri-codegen-1.1.1
+	tauri-macros-1.1.1
+	tauri-runtime-0.11.1
+	tauri-runtime-wry-0.11.1
+	tauri-utils-1.1.1
 	tempfile-3.3.0
 	tendril-0.4.3
 	terminfo-0.7.3
 	termios-0.3.3
 	termwiz-0.15.0
 	thin-slice-0.1.1
-	thiserror-1.0.31
-	thiserror-impl-1.0.31
+	thiserror-1.0.35
+	thiserror-impl-1.0.35
 	thread-id-4.0.0
+	thread_local-0.3.6
 	thread_local-1.1.4
 	time-0.1.44
-	time-0.3.11
+	time-0.3.14
 	tinyvec-1.6.0
 	tinyvec_macros-0.1.0
-	tokio-1.20.0
+	tokio-1.21.1
 	tokio-macros-1.8.0
 	tokio-native-tls-0.3.0
-	tokio-stream-0.1.9
+	tokio-stream-0.1.10
 	tokio-tungstenite-0.15.0
 	tokio-util-0.6.10
-	tokio-util-0.7.3
+	tokio-util-0.7.4
 	toml-0.5.9
 	tower-service-0.3.2
-	tracing-0.1.35
+	tracing-0.1.36
 	tracing-attributes-0.1.22
-	tracing-core-0.1.28
+	tracing-core-0.1.29
 	tracing-log-0.1.3
-	tracing-subscriber-0.3.14
+	tracing-subscriber-0.3.15
 	traitobject-0.1.0
 	treediff-3.0.2
 	try-lock-0.2.3
@@ -407,15 +422,18 @@ CRATES="
 	twoway-0.1.8
 	typemap-0.3.3
 	typenum-1.15.0
-	ucd-trie-0.1.4
+	ucd-trie-0.1.5
+	ucd-util-0.1.9
 	unicase-2.6.0
 	unicode-bidi-0.3.8
-	unicode-ident-1.0.2
-	unicode-normalization-0.1.21
-	unicode-segmentation-1.9.0
+	unicode-ident-1.0.4
+	unicode-normalization-0.1.22
+	unicode-segmentation-1.10.0
 	unsafe-any-0.4.2
-	url-2.2.2
+	unsafe-libyaml-0.2.4
+	url-2.3.1
 	utf-8-0.7.6
+	utf8-ranges-1.0.5
 	utf8parse-0.2.0
 	uuid-0.8.2
 	uuid-1.1.2
@@ -424,9 +442,7 @@ CRATES="
 	version-compare-0.0.11
 	version-compare-0.1.0
 	version_check-0.9.4
-	vswhom-0.1.0
-	vswhom-sys-0.1.1
-	vtparse-0.6.1
+	vtparse-0.6.2
 	waker-fn-1.1.0
 	walkdir-2.3.2
 	want-0.3.0
@@ -434,49 +450,60 @@ CRATES="
 	wasi-0.9.0+wasi-snapshot-preview1
 	wasi-0.10.0+wasi-snapshot-preview1
 	wasi-0.11.0+wasi-snapshot-preview1
-	wasm-bindgen-0.2.81
-	wasm-bindgen-backend-0.2.81
-	wasm-bindgen-futures-0.4.31
-	wasm-bindgen-macro-0.2.81
-	wasm-bindgen-macro-support-0.2.81
-	wasm-bindgen-shared-0.2.81
-	web-sys-0.3.58
+	wasm-bindgen-0.2.83
+	wasm-bindgen-backend-0.2.83
+	wasm-bindgen-futures-0.4.33
+	wasm-bindgen-macro-0.2.83
+	wasm-bindgen-macro-support-0.2.83
+	wasm-bindgen-shared-0.2.83
+	web-sys-0.3.60
 	webkit2gtk-0.18.0
 	webkit2gtk-sys-0.18.0
-	webview2-com-0.16.0
+	webview2-com-0.19.1
 	webview2-com-macros-0.6.0
-	webview2-com-sys-0.16.0
+	webview2-com-sys-0.19.0
 	wepoll-ffi-0.1.2
 	which-3.1.1
-	which-4.2.5
-	wildmatch-2.1.1
+	which-4.3.0
 	winapi-0.3.9
 	winapi-i686-pc-windows-gnu-0.4.0
 	winapi-util-0.1.5
 	winapi-x86_64-pc-windows-gnu-0.4.0
-	window-shadows-0.1.3
-	window-vibrancy-0.1.3
+	window-shadows-0.2.0
+	window-vibrancy-0.3.0
+	windows-0.32.0
 	windows-0.37.0
-	windows-bindgen-0.37.0
-	windows-implement-0.37.0
-	windows-metadata-0.37.0
+	windows-0.39.0
+	windows-bindgen-0.39.0
+	windows-implement-0.39.0
+	windows-metadata-0.39.0
 	windows-sys-0.36.1
-	windows-tokens-0.37.0
+	windows-tokens-0.39.0
+	windows_aarch64_msvc-0.32.0
 	windows_aarch64_msvc-0.36.1
 	windows_aarch64_msvc-0.37.0
+	windows_aarch64_msvc-0.39.0
+	windows_i686_gnu-0.32.0
 	windows_i686_gnu-0.36.1
 	windows_i686_gnu-0.37.0
+	windows_i686_gnu-0.39.0
+	windows_i686_msvc-0.32.0
 	windows_i686_msvc-0.36.1
 	windows_i686_msvc-0.37.0
+	windows_i686_msvc-0.39.0
+	windows_x86_64_gnu-0.32.0
 	windows_x86_64_gnu-0.36.1
 	windows_x86_64_gnu-0.37.0
+	windows_x86_64_gnu-0.39.0
+	windows_x86_64_msvc-0.32.0
 	windows_x86_64_msvc-0.36.1
 	windows_x86_64_msvc-0.37.0
+	windows_x86_64_msvc-0.39.0
 	winreg-0.10.1
 	winres-0.1.12
-	wry-0.19.0
-	x11-2.19.1
-	x11-dl-2.19.1
+	wry-0.21.1
+	x11-2.20.0
+	x11-dl-2.20.0
 	xattr-0.2.3
 	xml-rs-0.8.4
 	yaml-rust-0.4.5
@@ -684,6 +711,7 @@ EYARN_LOCK=(
 	"@mui/system/-/system-5.10.3.tgz"
 	"@mui/types/-/types-7.2.0.tgz"
 	"@mui/utils/-/utils-5.10.3.tgz"
+	"@mui/x-data-grid/-/x-data-grid-5.17.4.tgz"
 	"multimatch/-/multimatch-4.0.0.tgz"
 	"nanoid/-/nanoid-3.3.4.tgz"
 	"node-domexception/-/node-domexception-1.0.0.tgz"
@@ -735,6 +763,7 @@ EYARN_LOCK=(
 	"readdirp/-/readdirp-3.6.0.tgz"
 	"recoil/-/recoil-0.7.5.tgz"
 	"regenerator-runtime/-/regenerator-runtime-0.13.9.tgz"
+	"reselect/-/reselect-4.1.6.tgz"
 	"resize-observer-polyfill/-/resize-observer-polyfill-1.5.1.tgz"
 	"resolve-from/-/resolve-from-4.0.0.tgz"
 	"resolve/-/resolve-1.22.1.tgz"
@@ -771,17 +800,17 @@ EYARN_LOCK=(
 	"@svgr/hast-util-to-babel-ast/-/hast-util-to-babel-ast-6.3.1.tgz"
 	"@svgr/plugin-jsx/-/plugin-jsx-6.3.1.tgz"
 	"swr/-/swr-1.3.0.tgz"
-	"@tauri-apps/api/-/api-1.0.2.tgz"
-	"@tauri-apps/cli/-/cli-1.0.5.tgz"
-	"@tauri-apps/cli-darwin-arm64/-/cli-darwin-arm64-1.0.5.tgz"
-	"@tauri-apps/cli-darwin-x64/-/cli-darwin-x64-1.0.5.tgz"
-	"@tauri-apps/cli-linux-arm64-gnu/-/cli-linux-arm64-gnu-1.0.5.tgz"
-	"@tauri-apps/cli-linux-arm64-musl/-/cli-linux-arm64-musl-1.0.5.tgz"
-	"@tauri-apps/cli-linux-arm-gnueabihf/-/cli-linux-arm-gnueabihf-1.0.5.tgz"
-	"@tauri-apps/cli-linux-x64-gnu/-/cli-linux-x64-gnu-1.0.5.tgz"
-	"@tauri-apps/cli-linux-x64-musl/-/cli-linux-x64-musl-1.0.5.tgz"
-	"@tauri-apps/cli-win32-ia32-msvc/-/cli-win32-ia32-msvc-1.0.5.tgz"
-	"@tauri-apps/cli-win32-x64-msvc/-/cli-win32-x64-msvc-1.0.5.tgz"
+	"@tauri-apps/api/-/api-1.1.0.tgz"
+	"@tauri-apps/cli/-/cli-1.1.1.tgz"
+	"@tauri-apps/cli-darwin-arm64/-/cli-darwin-arm64-1.1.1.tgz"
+	"@tauri-apps/cli-darwin-x64/-/cli-darwin-x64-1.1.1.tgz"
+	"@tauri-apps/cli-linux-arm64-gnu/-/cli-linux-arm64-gnu-1.1.1.tgz"
+	"@tauri-apps/cli-linux-arm64-musl/-/cli-linux-arm64-musl-1.1.1.tgz"
+	"@tauri-apps/cli-linux-arm-gnueabihf/-/cli-linux-arm-gnueabihf-1.1.1.tgz"
+	"@tauri-apps/cli-linux-x64-gnu/-/cli-linux-x64-gnu-1.1.1.tgz"
+	"@tauri-apps/cli-linux-x64-musl/-/cli-linux-x64-musl-1.1.1.tgz"
+	"@tauri-apps/cli-win32-ia32-msvc/-/cli-win32-ia32-msvc-1.1.1.tgz"
+	"@tauri-apps/cli-win32-x64-msvc/-/cli-win32-x64-msvc-1.1.1.tgz"
 	"to-fast-properties/-/to-fast-properties-2.0.0.tgz"
 	"to-regex-range/-/to-regex-range-5.0.1.tgz"
 	"tr46/-/tr46-0.0.3.tgz"
@@ -860,7 +889,7 @@ BDEPEND="
 # disable Appimage & .deb creation
 # remove requirement of bundled clash & clash-meta binaries
 PATCHES=(
-	"${FILESDIR}/${P}-disable-release-bundle-creation.patch"
+	"${FILESDIR}/${PN}-1.1.0-disable-release-bundle-creation.patch"
 )
 
 pkg_pretend() {
@@ -922,7 +951,7 @@ src_prepare() {
 }
 
 src_compile() {
-	cargo-tauri build || die "cargo tauri build failed"
+	cargo-tauri build -- --release || die "cargo tauri build failed"
 }
 
 src_install() {
