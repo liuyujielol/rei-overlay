@@ -12,8 +12,7 @@ overlay for testing only
 ├── app-editors
 │   ├── appflowy-bin
 │   ├── cpeditor
-│   ├── lapce
-│   └── zee
+│   └── lapce
 ├── dev-python
 │   └── PyQt5
 ├── dev-qt
@@ -42,7 +41,6 @@ overlay for testing only
 ├── net-proxy
 │   ├── clash
 │   ├── clash-meta
-│   ├── clash-verge
 │   └── v2rayA
 ├── profiles
 ├── sci-mathematics
@@ -53,5 +51,5 @@ overlay for testing only
 └── x11-apps
     └── keyd
 
-47 directories
+45 directories
 ```
