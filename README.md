@@ -24,6 +24,8 @@ overlay for testing only
 ├── dev-vcs
 │   └── guitar
 ├── eclass
+├── games-arcade
+│   └── osu-lazer
 ├── kde-misc
 │   └── plasma-applet-netspeed-widget
 ├── media-libs
@@ -51,5 +53,5 @@ overlay for testing only
 └── x11-apps
     └── keyd
 
-45 directories
+47 directories
 ```
