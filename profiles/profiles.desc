@@ -1,4 +1,2 @@
-arm64 clang/musl/plasma dev
-arm64 clang/musl/plasma/merged-usr dev
 amd64 clang/plasma dev
 amd64 clang/plasma/merged-usr dev
