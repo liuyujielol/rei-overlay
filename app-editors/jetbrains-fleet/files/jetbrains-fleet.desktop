@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Fleet
+Icon=Fleet
+StartupWMClass=jetbrains-fleet
+Comment=The next-generation IDE by JetBrains
+Exec="/usr/bin/jetbrains-fleet" %u
+Version=1.0
+Type=Application
+Categories=Development;IDE;
+Terminal=false
