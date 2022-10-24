@@ -5,7 +5,7 @@ EAPI=8
 
 inherit desktop xdg
 
-MY_PN=AppFlowy
+MY_PN="AppFlowy"
 
 DESCRIPTION="AppFlowy is an open-source alternative to Notion"
 HOMEPAGE="https://www.appflowy.io/"
@@ -15,12 +15,13 @@ SRC_URI="
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="-* ~amd64"
 
 DEPEND="
-	dev-libs/atk
+	app-accessibility/at-spi2-core:2
 	dev-libs/glib:2
 	dev-libs/openssl
+	dev-libs/keybinder:3
 	media-libs/harfbuzz
 	media-libs/libepoxy
 	x11-libs/cairo
@@ -30,7 +31,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-RESTRICT=" strip "
+RESTRICT="mirror strip test"
 
 QA_PRESTRIPPED="
 	/opt/${PN}/lib/libapp.so
