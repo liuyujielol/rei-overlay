@@ -8,7 +8,7 @@ inherit desktop xdg-utils
 if [[ "${PV}" == *9999* ]]; then
 	PROPERTIES+=" live"
 	# dev-dotnet/dotnet-sdk-bin:6.0 has no x86 keyword
-	KEYWORDS="~amd64 ~arm ~arm64"
+	#KEYWORDS="~amd64 ~arm ~arm64"
 fi
 
 MY_PV="2022.923.1"
