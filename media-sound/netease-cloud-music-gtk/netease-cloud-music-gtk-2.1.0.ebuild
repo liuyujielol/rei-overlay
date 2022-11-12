@@ -16,18 +16,20 @@ CRATES="
 	bitflags-1.3.2
 	block-0.1.6
 	bumpalo-3.11.1
-	bytemuck-1.12.1
+	bytemuck-1.12.3
 	byteorder-1.4.3
 	bytes-1.2.1
 	cache-padded-1.2.0
 	cairo-rs-0.16.1
 	cairo-sys-rs-0.16.0
 	castaway-0.1.2
-	cc-1.0.73
+	cc-1.0.76
 	cfg-expr-0.11.0
 	cfg-if-1.0.0
 	color_quant-1.1.0
 	concurrent-queue-1.2.4
+	cookie-0.16.1
+	cookie_store-0.19.0
 	crc32fast-1.3.2
 	crossbeam-channel-0.5.6
 	crossbeam-deque-0.8.2
@@ -35,11 +37,11 @@ CRATES="
 	crossbeam-utils-0.8.12
 	crunchy-0.2.2
 	curl-0.4.44
-	curl-sys-0.4.58+curl-7.86.0
+	curl-sys-0.4.59+curl-7.86.0
 	dbus-0.6.5
 	either-1.8.0
 	encoding_rs-0.8.31
-	env_logger-0.9.1
+	env_logger-0.9.3
 	event-listener-2.5.3
 	exr-1.5.2
 	fastrand-1.8.0
@@ -50,7 +52,6 @@ CRATES="
 	foreign-types-0.3.2
 	foreign-types-shared-0.1.1
 	form_urlencoded-1.1.0
-	fragile-2.0.0
 	futures-channel-0.3.25
 	futures-core-0.3.25
 	futures-executor-0.3.25
@@ -85,8 +86,8 @@ CRATES="
 	gstreamer-0.19.1
 	gstreamer-base-0.19.1
 	gstreamer-base-sys-0.19.0
-	gstreamer-player-0.19.0
-	gstreamer-player-sys-0.19.0
+	gstreamer-play-0.19.0
+	gstreamer-play-sys-0.19.0
 	gstreamer-sys-0.19.0
 	gstreamer-video-0.19.0
 	gstreamer-video-sys-0.19.0
@@ -97,7 +98,7 @@ CRATES="
 	heck-0.4.0
 	hermit-abi-0.1.19
 	hex-0.4.3
-	html-escape-0.2.11
+	html-escape-0.2.12
 	http-0.2.8
 	httpdate-1.0.2
 	humantime-2.1.0
@@ -126,16 +127,16 @@ CRATES="
 	miniz_oxide-0.5.4
 	miniz_oxide-0.6.2
 	mpris-player-0.6.2
-	muldiv-1.0.0
+	muldiv-1.0.1
 	nanorand-0.7.0
 	num-integer-0.1.45
 	num-rational-0.4.1
 	num-traits-0.2.15
-	num_cpus-1.13.1
+	num_cpus-1.14.0
 	objc-0.2.7
 	objc-foundation-0.1.1
 	objc_id-0.1.1
-	once_cell-1.15.0
+	once_cell-1.16.0
 	openssl-0.10.42
 	openssl-macros-0.1.0
 	openssl-probe-0.1.5
@@ -146,20 +147,22 @@ CRATES="
 	parking-2.0.0
 	paste-1.0.9
 	percent-encoding-2.2.0
-	pest-2.4.0
+	pest-2.4.1
 	pin-project-1.0.12
 	pin-project-internal-1.0.12
 	pin-project-lite-0.2.9
 	pin-utils-0.1.0
 	pkg-config-0.3.26
-	png-0.17.6
+	png-0.17.7
 	polling-2.4.0
-	ppv-lite86-0.2.16
+	ppv-lite86-0.2.17
 	pretty-hex-0.3.0
 	proc-macro-crate-1.2.1
 	proc-macro-error-1.0.4
 	proc-macro-error-attr-1.0.4
 	proc-macro2-1.0.47
+	psl-types-2.0.11
+	publicsuffix-2.2.3
 	qrcode-generator-4.1.6
 	qrcodegen-1.8.0
 	quote-1.0.21
@@ -168,8 +171,8 @@ CRATES="
 	rand_core-0.6.4
 	rayon-1.5.3
 	rayon-core-1.9.3
-	regex-1.6.0
-	regex-syntax-0.6.27
+	regex-1.7.0
+	regex-syntax-0.6.28
 	rustc_version-0.3.3
 	ryu-1.0.11
 	schannel-0.1.20
@@ -192,7 +195,10 @@ CRATES="
 	thiserror-1.0.37
 	thiserror-impl-1.0.37
 	threadpool-1.8.1
-	tiff-0.7.3
+	tiff-0.7.4
+	time-0.3.17
+	time-core-0.1.0
+	time-macros-0.2.6
 	tinyvec-1.6.0
 	tinyvec_macros-0.1.0
 	toml-0.5.9
@@ -208,7 +214,7 @@ CRATES="
 	urlqstring-0.3.5
 	utf8-width-0.1.6
 	vcpkg-0.2.15
-	version-compare-0.1.0
+	version-compare-0.1.1
 	version_check-0.9.4
 	waker-fn-1.1.0
 	wasi-0.11.0+wasi-snapshot-preview1
@@ -282,7 +288,7 @@ src_unpack() {
 
 src_prepare() {
 	local PATCHES=(
-		"${FILESDIR}/${P}-fix-wrong-metainfo-install-location.patch"
+		"${FILESDIR}/${PN}-2.0.3-fix-wrong-metainfo-install-location.patch"
 	)
 	default
 }
