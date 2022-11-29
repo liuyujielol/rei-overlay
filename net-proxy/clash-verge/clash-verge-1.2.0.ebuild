@@ -615,8 +615,8 @@ src_compile() {
 
 	mkdir src-tauri/resources || die
 	mkdir src-tauri/sidecar || die
-	ln -sv "${EROOT}"/usr/bin/clash "src-tauri/sidecar/clash-x86_64-unknown-linux-gnu"
-	ln -sv "${EROOT}"/usr/bin/clash-meta "src-tauri/sidecar/clash-meta-x86_64-unknown-linux-gnu"
+	ln -sv "${ROOT}"/usr/bin/clash "src-tauri/sidecar/clash-x86_64-unknown-linux-gnu"
+	ln -sv "${ROOT}"/usr/bin/clash-meta "src-tauri/sidecar/clash-meta-x86_64-unknown-linux-gnu"
 	ln -sv "${DISTDIR}/clash-country-${MMDB_V}.mmdb" src-tauri/resources/Country.mmdb
 
 	echo "yarn-offline-mirror \"${WORKDIR}/yarn_offline_mirror\"" > "${S}/.yarnrc" || die
