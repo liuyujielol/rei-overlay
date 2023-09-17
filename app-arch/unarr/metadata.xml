@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
-<pkgmetadata>
-	<!-- maintainer-needed -->
-	<use>
-		<flag name="7zip">Install app-arch/p7zip for 7zip archive support</flag>
-	</use>
-</pkgmetadata>
