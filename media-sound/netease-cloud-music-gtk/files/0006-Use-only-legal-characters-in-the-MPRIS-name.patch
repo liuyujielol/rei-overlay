@@ -1,0 +1,33 @@
+---
+ src/audio/mpris.rs | 2 +-
+ src/main.rs        | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/audio/mpris.rs b/src/audio/mpris.rs
+index 38337e7..ae3973f 100644
+--- a/src/audio/mpris.rs
++++ b/src/audio/mpris.rs
+@@ -29,7 +29,7 @@ pub struct MprisController {
+ impl MprisController {
+     pub fn new() -> Self {
+         let mpris = MprisPlayer::new(
+-            crate::APP_ID.to_string(),
++            crate::MPRIS_NAME.to_string(),
+             gettextrs::gettext(crate::APP_NAME),
+             crate::APP_ID.to_string(),
+         );
+diff --git a/src/main.rs b/src/main.rs
+index d54764c..057fb7a 100644
+--- a/src/main.rs
++++ b/src/main.rs
+@@ -19,6 +19,7 @@ use gtk::prelude::*;
+ use env_logger::Env;
+ 
+ const APP_ID: &str = "com.gitee.gmg137.NeteaseCloudMusicGtk4";
++const MPRIS_NAME: &str = "NeteaseCloudMusicGtk";
+ const APP_NAME: &str = "NetEase Cloud Music Gtk4";
+ 
+ fn main() {
+-- 
+2.42.0
+
