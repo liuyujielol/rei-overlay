@@ -152,10 +152,10 @@ ppy.localisationanalyser@2023.712.0
 ppy.managedbass@2022.1216.0
 ppy.managedbass.fx@2022.1216.0
 ppy.managedbass.mix@2022.1216.0
-ppy.osu.framework@2023.925.0
-ppy.osu.framework.nativelibs@2023.904.0-nativelibs
+ppy.osu.framework@2023.1006.0
+ppy.osu.framework.nativelibs@2023.1004.1-nativelibs
 ppy.osu.framework.sourcegeneration@2023.720.0
-ppy.osu.game.resources@2023.914.0
+ppy.osu.game.resources@2023.1003.0
 ppy.osutk.ns20@1.0.211
 ppy.sdl2-cs@1.0.671-alpha
 ppy.veldrid@4.9.3-g91ce5a6cda
@@ -412,7 +412,7 @@ src_compile() {
 		)
 	fi
 
-	edotnet publish "${DOTNET_PKG_PROJECTS}" "${build_args[@]}"
+	edotnet build "${DOTNET_PKG_PROJECTS}" "${build_args[@]}"
 }
 
 src_install() {
