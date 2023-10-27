@@ -12,7 +12,7 @@ discordrichpresence@1.2.1.24
 ffmpeg.autogen@4.3.0.1
 fody@6.8.0
 hidsharpcore@1.2.1.1
-htmlagilitypack@1.11.53
+htmlagilitypack@1.11.54
 humanizer@2.14.1
 humanizer.core@2.14.1
 humanizer.core.af@2.14.1
@@ -66,27 +66,27 @@ humanizer.core.zh-hant@2.14.1
 jetbrains.annotations@2022.3.1
 managed-midi@1.10.0
 markdig@0.23.0
-messagepack@2.5.124
-messagepack.annotations@2.5.124
+messagepack@2.5.129
+messagepack.annotations@2.5.129
 microsoft.aspnetcore.app.runtime.linux-arm@6.0.12
 microsoft.aspnetcore.app.runtime.linux-arm64@6.0.12
 microsoft.aspnetcore.app.runtime.linux-musl-arm@6.0.12
 microsoft.aspnetcore.app.runtime.linux-musl-arm64@6.0.12
 microsoft.aspnetcore.app.runtime.linux-musl-x64@6.0.12
 microsoft.aspnetcore.app.runtime.linux-x64@6.0.12
-microsoft.aspnetcore.connections.abstractions@7.0.11
-microsoft.aspnetcore.http.connections.client@7.0.11
-microsoft.aspnetcore.http.connections.common@7.0.11
-microsoft.aspnetcore.signalr.client@7.0.11
-microsoft.aspnetcore.signalr.client.core@7.0.11
-microsoft.aspnetcore.signalr.common@7.0.11
-microsoft.aspnetcore.signalr.protocols.json@7.0.11
-microsoft.aspnetcore.signalr.protocols.messagepack@7.0.11
-microsoft.aspnetcore.signalr.protocols.newtonsoftjson@7.0.11
+microsoft.aspnetcore.connections.abstractions@7.0.12
+microsoft.aspnetcore.http.connections.client@7.0.12
+microsoft.aspnetcore.http.connections.common@7.0.12
+microsoft.aspnetcore.signalr.client@7.0.12
+microsoft.aspnetcore.signalr.client.core@7.0.12
+microsoft.aspnetcore.signalr.common@7.0.12
+microsoft.aspnetcore.signalr.protocols.json@7.0.12
+microsoft.aspnetcore.signalr.protocols.messagepack@7.0.12
+microsoft.aspnetcore.signalr.protocols.newtonsoftjson@7.0.12
 microsoft.codeanalysis.bannedapianalyzers@3.3.4
 microsoft.csharp@4.5.0
 microsoft.csharp@4.7.0
-microsoft.data.sqlite.core@7.0.11
+microsoft.data.sqlite.core@7.0.12
 microsoft.diagnostics.netcore.client@0.2.61701
 microsoft.diagnostics.runtime@2.0.161401
 microsoft.dotnet.platformabstractions@2.0.3
@@ -96,7 +96,7 @@ microsoft.extensions.dependencyinjection@7.0.0
 microsoft.extensions.dependencyinjection.abstractions@6.0.0-rc.1.21451.13
 microsoft.extensions.dependencyinjection.abstractions@7.0.0
 microsoft.extensions.dependencymodel@2.0.3
-microsoft.extensions.features@7.0.11
+microsoft.extensions.features@7.0.12
 microsoft.extensions.logging@7.0.0
 microsoft.extensions.logging.abstractions@7.0.0
 microsoft.extensions.logging.abstractions@7.0.1
@@ -152,10 +152,10 @@ ppy.localisationanalyser@2023.712.0
 ppy.managedbass@2022.1216.0
 ppy.managedbass.fx@2022.1216.0
 ppy.managedbass.mix@2022.1216.0
-ppy.osu.framework@2023.925.0
-ppy.osu.framework.nativelibs@2023.904.0-nativelibs
+ppy.osu.framework@2023.1012.0
+ppy.osu.framework.nativelibs@2023.1004.1-nativelibs
 ppy.osu.framework.sourcegeneration@2023.720.0
-ppy.osu.game.resources@2023.914.0
+ppy.osu.game.resources@2023.1023.0
 ppy.osutk.ns20@1.0.211
 ppy.sdl2-cs@1.0.671-alpha
 ppy.veldrid@4.9.3-g91ce5a6cda
@@ -208,7 +208,7 @@ runtime.unix.system.net.primitives@4.3.0
 runtime.unix.system.net.sockets@4.3.0
 runtime.unix.system.private.uri@4.3.0
 runtime.unix.system.runtime.extensions@4.3.0
-sentry@3.39.1
+sentry@3.40.0
 sharpcompress@0.31.0
 sharpcompress@0.33.0
 sharpfnt@2.0.0
@@ -345,7 +345,7 @@ vortice.dxgi@2.4.2
 vortice.mathematics@1.4.25
 "
 
-inherit multiprocessing dotnet-pkg desktop xdg
+inherit dotnet-pkg desktop xdg
 
 DESCRIPTION="rhythm is just a *click* away! "
 HOMEPAGE="
@@ -358,12 +358,14 @@ if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/ppy/osu.git"
 else
 	SRC_URI="https://github.com/ppy/osu/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
-	SRC_URI+=" ${NUGET_URIS} "
 	# updtream supported runtime:
 	# linux-{,musl-}{arm,arm64,x64,x86}
 	# only tested on linux-x64
 	KEYWORDS="~amd64"
+	S="${WORKDIR}/osu-${PV}"
 fi
+
+SRC_URI+=" ${NUGET_URIS} "
 
 LICENSE="MIT CC-BY-NC-4.0"
 SLOT="0"
@@ -381,38 +383,29 @@ RDEPEND="
 "
 BDEPEND="${DEPEND}"
 
-S="${WORKDIR}/osu-${PV}"
 DOTNET_PKG_PROJECTS=( "${S}/osu.Desktop/osu.Desktop.csproj" )
 
 DOCS=( README.md )
 
+src_unpack() {
+	dotnet-pkg_src_unpack
+
+	[[ ${EGIT_REPO_URI} ]] && git-r3_src_unpack
+}
+
 src_configure() {
-	# skip dotnet restore here
+	dotnet-pkg-base_info
+	dotnet-pkg_foreach-project dotnet-pkg-base_restore
+	# skip **dotnet-pkg-base_foreach-solution** here
 	# avoid requiring android workloads
-	return
 }
 
 src_compile() {
-	# DOTNET_PKG_* variables are set by dotnet-pkg.eclass
-	local -a build_args=(
-		--configuration "${DOTNET_PKG_CONFIGURATION}"
-		--output "${DOTNET_PKG_OUTPUT}"
-		--runtime "${DOTNET_PKG_RUNTIME}"
-		-maxCpuCount:$(makeopts_jobs)
-		--source "${NUGET_PACKAGES}"
-		--no-self-contained
+	DOTNET_PKG_BUILD_EXTRA_ARGS+=(
 		-f net6.0
-		/property:Version="${PV}"
+		-p:Version="${PV}"
 	)
-
-	if ! use debug ; then
-		build_args+=(
-			-p:StripSymbols=true
-			-p:NativeDebugSymbols=false
-		)
-	fi
-
-	edotnet publish "${DOTNET_PKG_PROJECTS}" "${build_args[@]}"
+	dotnet-pkg_src_compile
 }
 
 src_install() {
