@@ -1,6 +1,6 @@
 ---
- data/meson.build   | 2 +-
- 1 files changed, 1 insertion(+), 1 deletions(-)
+ data/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/data/meson.build b/data/meson.build
 index b9cb54a..cb5f3ff 100644
@@ -13,8 +13,5 @@ index b9cb54a..cb5f3ff 100644
 -  install_dir: join_paths(get_option('datadir'), 'appdata')
 +  install_dir: join_paths(get_option('datadir'), 'metainfo')
  )
- 
- appstream_util = find_program('appstream-util', required: false)
--- 
-2.42.0
 
+ appstream_util = find_program('appstream-util', required: false)
