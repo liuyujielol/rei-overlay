@@ -1,0 +1,86 @@
+[__config__]
+oldver = "old_ver.json"
+newver = "new_ver.json"
+
+["app-editors/appflowy-bin"]
+source = "github"
+github = "AppFlowy-IO/AppFlowy"
+use_latest_release = true
+
+["app-text/cajviewer"]
+source = "regex"
+url = "https://cajviewer.cnki.net/"
+regex = "net.cnki.cajviewer_([\\d.]+)_amd64.deb"
+
+["dev-util/seergdb"]
+source = "github"
+github = "epasveer/seer"
+prefix = "v"
+use_latest_release = true
+
+["dev-vcs/guitar"]
+source = "github"
+github = "soramimi/Guitar"
+prefix = "v"
+use_latest_release = true
+
+["games-arcade/osu-lazer"]
+source = "github"
+github = "ppy/osu"
+
+["kde-misc/plasma-applet-netspeed-widget"]
+source = "github"
+github = "dfaust/plasma-applet-netspeed-widget"
+use_latest_tag = true
+prefix = "v"
+
+["kde-misc/plasma-applet-resources-monitor"]
+source = "github"
+github = "orblazer/plasma-applet-resources-monitor"
+prefix = "v"
+
+["media-plugins/osdlyrics"]
+source = "github"
+github = "osdlyrics/osdlyrics"
+use_latest_release = true
+
+["media-sound/netease-cloud-music-gtk"]
+source = "github"
+github = "gmg137/netease-cloud-music-gtk"
+use_latest_release = true
+
+["media-sound/termusic"]
+source = "github"
+github = "tramhao/termusic"
+use_latest_release = true
+prefix = "v"
+
+["net-misc/termscp"]
+source = "github"
+github = "veeso/termscp"
+prefix = "v"
+
+["net-p2p/qbittorrent-enhanced"]
+source = "github"
+github = "c0re100/qBittorrent-Enhanced-Edition"
+use_latest_release = true
+prefix = "release-"
+
+["net-proxy/clash"]
+source = "github"
+github = "Dreamacro/clash"
+use_latest_release = true
+prefix = "v"
+
+["net-proxy/v2ray"]
+source = "github"
+github = "v2fly/v2ray-core"
+use_latest_release = true
+prefix = "v"
+
+["net-proxy/v2rayA"]
+source = "github"
+github = "v2rayA/v2rayA"
+use_latest_release = true
+prefix = "v"
+
