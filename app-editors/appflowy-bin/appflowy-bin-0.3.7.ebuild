@@ -10,7 +10,7 @@ MY_PN="AppFlowy"
 DESCRIPTION="AppFlowy is an open-source alternative to Notion"
 HOMEPAGE="https://www.appflowy.io/"
 SRC_URI="
-	https://github.com/AppFlowy-IO/AppFlowy/releases/download/${PV}/${MY_PN}_x86_64-unknown-linux-gnu_ubuntu-20.04.tar.gz -> ${P}.tar.gz
+	https://github.com/AppFlowy-IO/AppFlowy/releases/download/${PV}/AppFlowy-${PV}-linux-x86_64.tar.gz
 "
 
 LICENSE="AGPL-3"
@@ -27,6 +27,7 @@ DEPEND="
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
+	x11-libs/libnotify
 	x11-libs/pango
 "
 RDEPEND="${DEPEND}"
@@ -39,7 +40,7 @@ QA_PRESTRIPPED="
 "
 QA_PREBUILT="*"
 
-S="${WORKDIR}/${MY_PN}_x86_64-unknown-linux-gnu_ubuntu-20.04/${MY_PN}"
+S="${WORKDIR}/${MY_PN}"
 
 src_install() {
 	insinto "/opt/${PN}"
@@ -47,9 +48,6 @@ src_install() {
 
 	fperms +x /opt/${PN}/AppFlowy
 
-	sed -i "s#\[CHANGE_THIS\]/AppFlowy#/opt/${PN}#g" appflowy.desktop.temp || die
-	sed -i "s#/opt/${PN}/flowy_logo.svg#flowy_logo#g" appflowy.desktop.temp || die
-	mv appflowy.desktop{.temp,} || die
-	domenu appflowy.desktop
-	doicon -s scalable flowy_logo.svg
+	domenu "${FILESDIR}/AppFlowy.desktop"
+	doicon -s scalable data/flutter_assets/assets/images/flowy_logo.svg
 }
