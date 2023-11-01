@@ -21,7 +21,7 @@ SRC_URI+="
 LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
+IUSE="xray"
 RESTRICT="mirror"
 
 DEPEND=""
@@ -31,6 +31,7 @@ RDEPEND="
 		>=net-proxy/v2ray-5
 		>=net-proxy/v2ray-bin-5
 	)
+	xray? ( net-proxy/xray )
 "
 BDEPEND="
 	>=dev-lang/go-1.21:*
