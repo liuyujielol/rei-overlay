@@ -2,10 +2,7 @@
 <!DOCTYPE
 pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <name>ston</name>
-    <email>ston.jia@qq.com</email>
-  </maintainer>
+<!--   maintainer-needed -->
   <use>
     <flag name="geosite">Install geosite.dat</flag>
     <flag name="geoip">Install geoip.dat</flag>
