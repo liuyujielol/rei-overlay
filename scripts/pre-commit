@@ -4,6 +4,7 @@ IFS=$'\n\t'
 
 sed -i '/^\[comment\]: # \(.*pre-commit.*\)/q' ./README.md
 echo '```Hack' >> README.md
-tree -F -n -d -L 2 . >> README.md
+#tree -F -n -d -L 2 . >> README.md
+tree -F -n -d -L 2 -I scripts -I .github -I licenses -I metadata -I profiles . >> README.md
 echo '```' >> README.md
 git add README.md
