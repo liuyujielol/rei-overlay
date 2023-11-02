@@ -460,7 +460,7 @@ inherit cargo
 DESCRIPTION="Command line interface for building Tauri apps"
 HOMEPAGE="https://tauri.app"
 SRC_URI="
-	https://github.com/tauri-apps/tauri/archive/refs/tags/@tauri-apps/cli-v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/tauri-apps/tauri/archive/refs/tags/tauri-cli-v${PV}.tar.gz
 	${CARGO_CRATE_URIS}
 "
 
@@ -470,4 +470,4 @@ LICENSE+=" Apache-2.0 BSD CC0-1.0 ISC MIT MPL-2.0 Unicode-DFS-2016 ZLIB"
 SLOT="0"
 KEYWORDS="~amd64"
 
-S="${WORKDIR}/tauri--tauri-apps-cli-v${PV}/tooling/cli"
+S="${WORKDIR}/tauri-tauri-cli-v${PV}/tooling/cli"
