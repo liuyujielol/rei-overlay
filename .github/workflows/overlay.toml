@@ -27,6 +27,7 @@ use_latest_release = true
 ["games-arcade/osu-lazer"]
 source = "github"
 github = "ppy/osu"
+use_latest_release = true
 
 ["kde-misc/plasma-applet-netspeed-widget"]
 source = "github"
@@ -38,6 +39,7 @@ prefix = "v"
 source = "github"
 github = "orblazer/plasma-applet-resources-monitor"
 prefix = "v"
+use_latest_release = true
 
 ["media-plugins/osdlyrics"]
 source = "github"
@@ -59,6 +61,7 @@ prefix = "v"
 source = "github"
 github = "veeso/termscp"
 prefix = "v"
+use_latest_release = true
 
 ["net-p2p/qbittorrent-enhanced"]
 source = "github"
