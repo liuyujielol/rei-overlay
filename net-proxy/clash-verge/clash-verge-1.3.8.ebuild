@@ -558,6 +558,7 @@ SRC_URI="
 	https://github.com/Dreamacro/maxmind-geoip/releases/download/20231012/Country.mmdb -> ${P}-Country.mmdb
 	${CARGO_CRATE_URIS}
 "
+# genretated with github action
 SRC_URI+="
 	https://github.com/liuyujielol/gentoo-go-deps/releases/download/${P}/${P}-node_modules.tar.xz
 "
@@ -584,6 +585,7 @@ DEPEND="
 	dev-libs/glib:2
 	dev-libs/openssl:=
 	dev-libs/libayatana-appindicator
+	net-libs/libsoup:2.4
 	net-libs/webkit-gtk:4=
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
