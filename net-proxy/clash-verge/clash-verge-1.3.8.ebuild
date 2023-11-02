@@ -579,9 +579,6 @@ REQUIRED_USE="
 "
 
 DEPEND="
-	clash? ( net-proxy/clash )
-	clash-meta? ( net-proxy/clash-meta )
-	clash-premium? ( net-proxy/clash-premium-bin )
 	dev-libs/glib:2
 	dev-libs/openssl:=
 	dev-libs/libayatana-appindicator
@@ -591,7 +588,14 @@ DEPEND="
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
 "
-RDEPEND="${DEPEND}"
+RDEPEND="
+	${DEPEND}
+	app-alternatives/v2ray-geoip
+	app-alternatives/v2ray-geosite
+	clash? ( net-proxy/clash )
+	clash-meta? ( net-proxy/clash-meta )
+	clash-premium? ( net-proxy/clash-premium-bin )
+"
 BDEPEND="
 	>=dev-util/tauri-cli-1.0.4
 	dev-lang/typescript
@@ -600,19 +604,10 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${P}-disable-bundle-creation-and-tauri-updater.patch"
+	"${FILESDIR}/${P}-disable-tauri-bundle-and-updater.patch"
 )
 
 src_prepare() {
-
-	mkdir src-tauri/resources || die
-	mkdir src-tauri/sidecar || die
-
-	# don't download anything, pretend we have it
-	touch "${S}/src-tauri/resources/Country.mmdb"
-	touch "${S}/src-tauri/sidecar/clash-x86_64-unknown-linux-gnu"
-	touch "${S}/src-tauri/sidecar/clash-meta-x86_64-unknown-linux-gnu"
-
 	ln -sv "${WORKDIR}/node_modules" "${S}/node_modules" || die
 
 	default
@@ -633,8 +628,12 @@ src_install() {
 
 	make_desktop_entry clash-verge clash-verge clash-verge 'Network;Development' 'Terminal=false'
 
-	# clash* packages don't install any
-	# they download on live
-	insinto "/usr/lib/${PN}"
+	dosym -r "/usr/share/v2ray/geosite.dat" "/usr/lib/${PN}/resources/geosite.dat"
+	dosym -r "/usr/share/v2ray/geoip.dat" "/usr/lib/${PN}/resources/geoip.dat"
+
+	# clash* packages don't install a Country.mmdb
+	# they download this on live
+	# we install one anyway
+	insinto "/usr/lib/${PN}/resources"
 	newins "${DISTDIR}/${P}-Country.mmdb" Country.mmdb
 }
