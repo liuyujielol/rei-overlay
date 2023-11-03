@@ -75,24 +75,6 @@ github = "c0re100/qBittorrent-Enhanced-Edition"
 use_latest_release = true
 prefix = "release-"
 
-["net-proxy/clash"]
-source = "github"
-github = "Dreamacro/clash"
-use_latest_release = true
-prefix = "v"
-
-["net-proxy/clash-meta"]
-source = "github"
-github = "MetaCubeX/Clash.Meta"
-use_latest_release = true
-prefix = "v"
-
-["net-proxy/clash-verge"]
-source = "github"
-github = "zzzgydi/clash-verge"
-use_latest_release = true
-prefix = "v"
-
 ["net-proxy/v2ray"]
 source = "github"
 github = "v2fly/v2ray-core"
