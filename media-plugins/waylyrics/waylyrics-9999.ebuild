@@ -41,6 +41,7 @@ RDEPEND="${DEPEND}"
 BDEPEND="
 	app-misc/jq
 	dev-libs/mimalloc
+	>=virtual/rust-1.70:*
 "
 
 src_unpack() {
