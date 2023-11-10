@@ -75,6 +75,12 @@ github = "c0re100/qBittorrent-Enhanced-Edition"
 use_latest_release = true
 prefix = "release-"
 
+["net-proxy/sing-box"]
+source = "github"
+github = "SagerNet/sing-box"
+use_latest_release = true
+prefix = "v"
+
 ["net-proxy/v2ray"]
 source = "github"
 github = "v2fly/v2ray-core"
