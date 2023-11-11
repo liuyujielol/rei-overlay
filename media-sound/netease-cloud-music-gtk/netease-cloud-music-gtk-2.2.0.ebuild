@@ -13,6 +13,7 @@ CRATES="
 	anyhow@1.0.75
 	async-channel@1.9.0
 	atomic_refcell@0.1.12
+	atty@0.2.14
 	autocfg@1.1.0
 	base64@0.21.4
 	bitflags@1.3.2
@@ -22,8 +23,8 @@ CRATES="
 	bytemuck@1.14.0
 	byteorder@1.5.0
 	bytes@1.5.0
-	cairo-rs@0.18.3
-	cairo-sys-rs@0.18.2
+	cairo-rs@0.16.7
+	cairo-sys-rs@0.16.3
 	castaway@0.1.2
 	cc@1.0.83
 	cfg-expr@0.15.5
@@ -40,13 +41,11 @@ CRATES="
 	curl@0.4.44
 	dbus@0.6.5
 	deranged@0.3.8
-	either@1.9.0
 	encoding_rs@0.8.33
-	env_logger@0.10.0
+	env_logger@0.9.3
 	equivalent@1.0.1
-	errno@0.3.5
 	event-listener@2.5.3
-	fastrand@1.9.0
+	fastrand@1.8.0
 	fdeflate@0.3.0
 	field-offset@0.3.6
 	flate2@1.0.27
@@ -62,37 +61,41 @@ CRATES="
 	futures-macro@0.3.28
 	futures-task@0.3.28
 	futures-util@0.3.28
-	gdk-pixbuf-sys@0.18.0
-	gdk-pixbuf@0.18.3
-	gdk4-sys@0.7.2
-	gdk4@0.7.3
+	gdk-pixbuf-sys@0.16.3
+	gdk-pixbuf@0.16.7
+	gdk4-sys@0.5.5
+	gdk4@0.5.5
 	getrandom@0.2.10
 	gettext-rs@0.7.0
 	gettext-sys@0.21.3
-	gio-sys@0.18.1
-	gio@0.18.3
-	glib-macros@0.18.3
-	glib-sys@0.18.1
-	glib@0.18.3
-	gobject-sys@0.18.0
-	graphene-rs@0.18.1
-	graphene-sys@0.18.1
-	gsk4-sys@0.7.3
-	gsk4@0.7.3
-	gstreamer-base-sys@0.21.1
-	gstreamer-base@0.21.0
-	gstreamer-play-sys@0.21.0
-	gstreamer-play@0.21.0
-	gstreamer-sys@0.21.1
-	gstreamer-video-sys@0.21.1
-	gstreamer-video@0.21.1
-	gstreamer@0.21.1
-	gtk4-macros@0.7.2
-	gtk4-sys@0.7.3
-	gtk4@0.7.3
+	gio-sys@0.16.3
+	gio@0.16.7
+	glib-macros@0.15.13
+	glib-macros@0.16.8
+	glib-sys@0.15.10
+	glib-sys@0.16.3
+	glib@0.15.12
+	glib@0.16.9
+	gobject-sys@0.15.10
+	gobject-sys@0.16.3
+	graphene-rs@0.16.3
+	graphene-sys@0.16.3
+	gsk4-sys@0.5.5
+	gsk4@0.5.5
+	gstreamer-base-sys@0.19.3
+	gstreamer-base@0.19.3
+	gstreamer-play-sys@0.19.2
+	gstreamer-play@0.19.4
+	gstreamer-sys@0.19.4
+	gstreamer-video-sys@0.19.5
+	gstreamer-video@0.19.5
+	gstreamer@0.19.8
+	gtk4-macros@0.5.6
+	gtk4-sys@0.5.5
+	gtk4@0.5.5
 	hashbrown@0.14.1
 	heck@0.4.1
-	hermit-abi@0.3.3
+	hermit-abi@0.1.19
 	hex@0.4.3
 	html-escape@0.2.13
 	http@0.2.9
@@ -105,19 +108,16 @@ CRATES="
 	image@0.24.7
 	indexmap@2.0.2
 	instant@0.1.12
-	is-terminal@0.4.9
 	isahc@1.7.2
-	itertools@0.11.0
 	itoa@1.0.9
 	js-sys@0.3.64
 	lazy_static@1.4.0
-	libadwaita-sys@0.5.3
-	libadwaita@0.5.3
+	libadwaita-sys@0.2.1
+	libadwaita@0.2.1
 	libc@0.2.149
 	libdbus-sys@0.2.5
 	libnghttp2-sys@0.1.8+1.55.1
 	libz-sys@1.1.12
-	linux-raw-sys@0.4.10
 	locale_config@0.3.0
 	log@0.4.20
 	malloc_buf@0.0.6
@@ -125,7 +125,7 @@ CRATES="
 	memoffset@0.9.0
 	mime@0.3.17
 	miniz_oxide@0.7.1
-	mpris-player2@0.6.1
+	mpris-player@0.6.2
 	muldiv@1.0.1
 	num-integer@0.1.45
 	num-rational@0.4.1
@@ -133,14 +133,14 @@ CRATES="
 	objc-foundation@0.1.1
 	objc@0.2.7
 	objc_id@0.1.1
-	once_cell@1.17.2
+	once_cell@1.16.0
 	openssl-macros@0.1.1
 	openssl-probe@0.1.5
 	openssl-sys@0.9.93
 	openssl@0.10.57
 	option-operations@0.5.0
-	pango-sys@0.18.0
-	pango@0.18.3
+	pango-sys@0.16.3
+	pango@0.16.5
 	parking@2.1.1
 	paste@1.0.14
 	percent-encoding@2.3.0
@@ -154,7 +154,6 @@ CRATES="
 	ppv-lite86@0.2.17
 	pretty-hex@0.3.0
 	proc-macro-crate@1.3.1
-	proc-macro-crate@2.0.0
 	proc-macro-error-attr@1.0.4
 	proc-macro-error@1.0.4
 	proc-macro2@1.0.69
@@ -169,7 +168,6 @@ CRATES="
 	regex-syntax@0.6.29
 	regex@1.7.3
 	rustc_version@0.4.0
-	rustix@0.38.17
 	ryu@1.0.15
 	schannel@0.1.22
 	semver@1.0.19
@@ -307,7 +305,6 @@ src_prepare() {
 
 	local PATCHES=(
 		"${FILESDIR}/${PN}-2.0.3-fix-wrong-metainfo-install-location.patch"
-		"${FILESDIR}/0001-fix-for-mpris-player.patch"
 	)
 	default
 }
