@@ -63,7 +63,7 @@ BDEPEND="
 
 DOCS=( AUTHORS Changelog CONTRIBUTING.md README.md )
 PATCHES=(
-	${FILESDIR}/4.5-fix-compile-error-when-disable-webui.patch
+	"${FILESDIR}/4.5-fix-compile-error-when-disable-webui.patch"
 )
 
 src_prepare() {
