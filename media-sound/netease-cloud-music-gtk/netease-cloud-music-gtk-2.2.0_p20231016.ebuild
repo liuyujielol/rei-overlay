@@ -12,17 +12,17 @@ CRATES="
 	android_system_properties@0.1.5
 	anyhow@1.0.75
 	async-channel@1.9.0
-	atomic_refcell@0.1.12
+	atomic_refcell@0.1.13
 	autocfg@1.1.0
-	base64@0.21.4
+	base64@0.21.5
 	bitflags@1.3.2
-	bitflags@2.4.0
+	bitflags@2.4.1
 	block@0.1.6
 	bumpalo@3.14.0
 	bytemuck@1.14.0
 	byteorder@1.5.0
 	bytes@1.5.0
-	cairo-rs@0.18.3
+	cairo-rs@0.18.2
 	cairo-sys-rs@0.18.2
 	castaway@0.1.2
 	cc@1.0.83
@@ -36,10 +36,10 @@ CRATES="
 	core-foundation-sys@0.8.4
 	crc32fast@1.3.2
 	crossbeam-utils@0.8.16
-	curl-sys@0.4.66+curl-8.3.0
+	curl-sys@0.4.68+curl-8.4.0
 	curl@0.4.44
 	dbus@0.6.5
-	deranged@0.3.8
+	deranged@0.3.9
 	either@1.9.0
 	encoding_rs@0.8.33
 	env_logger@0.10.0
@@ -49,31 +49,35 @@ CRATES="
 	fastrand@1.9.0
 	fdeflate@0.3.0
 	field-offset@0.3.6
-	flate2@1.0.27
+	flate2@1.0.28
 	fnv@1.0.7
 	foreign-types-shared@0.1.1
 	foreign-types@0.3.2
 	form_urlencoded@1.2.0
-	futures-channel@0.3.28
-	futures-core@0.3.28
-	futures-executor@0.3.28
-	futures-io@0.3.28
+	futures-channel@0.3.29
+	futures-core@0.3.29
+	futures-executor@0.3.29
+	futures-io@0.3.29
 	futures-lite@1.13.0
-	futures-macro@0.3.28
-	futures-task@0.3.28
-	futures-util@0.3.28
+	futures-macro@0.3.29
+	futures-task@0.3.29
+	futures-util@0.3.29
 	gdk-pixbuf-sys@0.18.0
-	gdk-pixbuf@0.18.3
+	gdk-pixbuf@0.18.0
 	gdk4-sys@0.7.2
 	gdk4@0.7.3
 	getrandom@0.2.10
 	gettext-rs@0.7.0
 	gettext-sys@0.21.3
 	gio-sys@0.18.1
-	gio@0.18.3
-	glib-macros@0.18.3
+	gio@0.18.2
+	glib-macros@0.15.13
+	glib-macros@0.18.2
+	glib-sys@0.15.10
 	glib-sys@0.18.1
-	glib@0.18.3
+	glib@0.15.12
+	glib@0.18.2
+	gobject-sys@0.15.10
 	gobject-sys@0.18.0
 	graphene-rs@0.18.1
 	graphene-sys@0.18.1
@@ -90,7 +94,7 @@ CRATES="
 	gtk4-macros@0.7.2
 	gtk4-sys@0.7.3
 	gtk4@0.7.3
-	hashbrown@0.14.1
+	hashbrown@0.14.2
 	heck@0.4.1
 	hermit-abi@0.3.3
 	hex@0.4.3
@@ -99,7 +103,7 @@ CRATES="
 	httpdate@1.0.3
 	humantime@2.1.0
 	iana-time-zone-haiku@0.1.2
-	iana-time-zone@0.1.57
+	iana-time-zone@0.1.58
 	idna@0.3.0
 	idna@0.4.0
 	image@0.24.7
@@ -125,7 +129,7 @@ CRATES="
 	memoffset@0.9.0
 	mime@0.3.17
 	miniz_oxide@0.7.1
-	mpris-player2@0.6.1
+	mpris-player@0.6.2
 	muldiv@1.0.1
 	num-integer@0.1.45
 	num-rational@0.4.1
@@ -140,8 +144,8 @@ CRATES="
 	openssl@0.10.57
 	option-operations@0.5.0
 	pango-sys@0.18.0
-	pango@0.18.3
-	parking@2.1.1
+	pango@0.18.0
+	parking@2.2.0
 	paste@1.0.14
 	percent-encoding@2.3.0
 	pin-project-internal@1.1.3
@@ -151,10 +155,10 @@ CRATES="
 	pkg-config@0.3.27
 	png@0.17.10
 	polling@2.8.0
+	powerfmt@0.2.0
 	ppv-lite86@0.2.17
 	pretty-hex@0.3.0
 	proc-macro-crate@1.3.1
-	proc-macro-crate@2.0.0
 	proc-macro-error-attr@1.0.4
 	proc-macro-error@1.0.4
 	proc-macro2@1.0.69
@@ -169,40 +173,40 @@ CRATES="
 	regex-syntax@0.6.29
 	regex@1.7.3
 	rustc_version@0.4.0
-	rustix@0.38.17
+	rustix@0.38.21
 	ryu@1.0.15
 	schannel@0.1.22
-	semver@1.0.19
-	serde@1.0.188
-	serde_derive@1.0.188
+	semver@1.0.20
+	serde@1.0.190
+	serde_derive@1.0.190
 	serde_json@1.0.107
-	serde_spanned@0.6.3
+	serde_spanned@0.6.4
 	simd-adler32@0.3.7
 	slab@0.4.9
 	sluice@0.5.5
 	smallvec@1.11.1
-	socket2@0.4.9
+	socket2@0.4.10
 	syn@1.0.109
 	syn@2.0.38
 	system-deps@6.1.2
-	target-lexicon@0.12.11
+	target-lexicon@0.12.12
 	temp-dir@0.1.11
 	termcolor@1.3.0
-	thiserror-impl@1.0.49
-	thiserror@1.0.49
+	thiserror-impl@1.0.50
+	thiserror@1.0.50
 	time-core@0.1.2
 	time-macros@0.2.15
-	time@0.3.29
+	time@0.3.30
 	tinyvec@1.6.0
 	tinyvec_macros@0.1.1
-	toml@0.8.2
-	toml_datetime@0.6.3
+	toml@0.8.6
+	toml_datetime@0.6.5
 	toml_edit@0.19.15
-	toml_edit@0.20.2
-	tracing-attributes@0.1.26
-	tracing-core@0.1.31
+	toml_edit@0.20.7
+	tracing-attributes@0.1.27
+	tracing-core@0.1.32
 	tracing-futures@0.2.5
-	tracing@0.1.37
+	tracing@0.1.40
 	unicode-bidi@0.3.13
 	unicode-ident@1.0.12
 	unicode-normalization@0.1.22
@@ -223,9 +227,9 @@ CRATES="
 	winapi-util@0.1.6
 	winapi-x86_64-pc-windows-gnu@0.4.0
 	winapi@0.3.9
+	windows-core@0.51.1
 	windows-sys@0.48.0
 	windows-targets@0.48.5
-	windows@0.48.0
 	windows_aarch64_gnullvm@0.48.5
 	windows_aarch64_msvc@0.48.5
 	windows_i686_gnu@0.48.5
@@ -233,7 +237,7 @@ CRATES="
 	windows_x86_64_gnu@0.48.5
 	windows_x86_64_gnullvm@0.48.5
 	windows_x86_64_msvc@0.48.5
-	winnow@0.5.16
+	winnow@0.5.17
 "
 
 NCM_API_TAG='1.2.0'
