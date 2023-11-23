@@ -264,7 +264,6 @@ LICENSE+="
 "
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
 RESTRICT="mirror"
 
 DEPEND="

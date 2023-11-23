@@ -266,7 +266,6 @@ LICENSE+="
 "
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
 RESTRICT="mirror"
 
 DEPEND="
@@ -307,7 +306,6 @@ src_prepare() {
 
 	local PATCHES=(
 		"${FILESDIR}/${PN}-2.0.3-fix-wrong-metainfo-install-location.patch"
-		"${FILESDIR}/0001-fix-for-mpris-player.patch"
 	)
 	default
 }
