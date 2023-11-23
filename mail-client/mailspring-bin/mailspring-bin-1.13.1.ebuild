@@ -22,7 +22,7 @@ RDEPEND="app-crypt/libsecret
 	dev-libs/libgcrypt
 	dev-libs/nss
 	gnome-base/gnome-keyring
-	sys-libs/db
+	sys-libs/db:5.3
 	virtual/libudev
 	x11-libs/gtk+:2
 	x11-libs/libXtst
