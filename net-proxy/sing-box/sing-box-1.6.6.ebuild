@@ -19,6 +19,7 @@ SRC_URI+="
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
+RESTRICT="mirror test"
 
 RDEPEND="
 	dev-libs/sing-geoip-bin
@@ -29,7 +30,7 @@ BDEPEND="
 "
 
 src_compile() {
-	local ETAGS=with_gvisor,with_dhcp,with_wireguard,with_utls,with_reality_server,with_clash_api,with_quic,with_ech
+	local ETAGS='with_gvisor,with_dhcp,with_wireguard,with_utls,with_reality_server,with_clash_api,with_quic,with_ech'
 	ego build -o ./bin/sing-box\
 		-v -trimpath -ldflags "-X 'github.com/sagernet/sing-box/constant.Version=${PV}' -s -w -buildid="\
 		-tags "${ETAGS}"\
