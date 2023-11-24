@@ -18,9 +18,12 @@ KEYWORDS="-* ~amd64"
 RESTRICT="mirror"
 IUSE="libnotify"
 
-RDEPEND="app-crypt/libsecret
+RDEPEND="
+	app-text/htmltidy
+	app-crypt/libsecret
 	dev-libs/libgcrypt
 	dev-libs/nss
+	dev-libs/openssl-compat:1.0.0
 	gnome-base/gnome-keyring
 	sys-libs/db:5.3
 	virtual/libudev
