@@ -12,12 +12,6 @@ source = "regex"
 url = "https://cajviewer.cnki.net/"
 regex = "net.cnki.cajviewer_([\\d.]+)_amd64.deb"
 
-["dev-util/seergdb"]
-source = "github"
-github = "epasveer/seer"
-prefix = "v"
-use_latest_release = true
-
 ["dev-util/tauri-cli"]
 source = "github"
 github = "tauri-apps/tauri"
