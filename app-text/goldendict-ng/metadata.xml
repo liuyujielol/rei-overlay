@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!--maintainer-needed-->
+	<maintainer type="person">
+		<email>2073201758GD@gmail.com</email>
+		<name>liuyujielol</name>
+	</maintainer>
+	<use>
+		<flag name="epwing">Enable epwing support with dev-libs/eb</flag>
+		<flag name="ffmpeg">Enable support for FFMPEG player</flag>
+		<flag name="system-fmt">Use dev-libs/libfmt instead of bundled one</flag>
+		<flag name="system-toml">Use dev-libs/tomlplusplus instead of bundled one</flag>
+		<flag name="tts">Enable QTexttoSpeech support</flag>
+		<flag name="xapian">Enable Xapian support</flag>
+		<flag name="zim">Enable zim support</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">xiaoyifang/goldendict-ng</remote-id>
 	</upstream>
