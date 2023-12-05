@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>2073201758GD@gmail.com</email>
+		<name>liuyujielol</name>
+	</maintainer>
+	<use>
+		<flag name="examples">Build libzim examples</flag>
+		<flag name="xapian">Build libzim with xapian support</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">openzim/libzim</remote-id>
+	</upstream>
+</pkgmetadata>
