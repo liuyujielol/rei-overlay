@@ -5,7 +5,10 @@ EAPI=8
 inherit cmake
 
 DESCRIPTION="Header-only TOML config file parser and serializer for C++17"
-HOMEPAGE="https://github.com/marzer/tomlplusplus"
+HOMEPAGE="
+	https://marzer.github.io/tomlplusplus
+	https://github.com/marzer/tomlplusplus
+"
 SRC_URI="https://github.com/marzer/tomlplusplus/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
