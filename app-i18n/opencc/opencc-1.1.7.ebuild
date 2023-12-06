@@ -20,8 +20,6 @@ KEYWORDS="~amd64"
 IUSE="doc test +python"
 RESTRICT="!test? ( test )"
 
-distutils_enable_tests pytest
-
 BDEPEND="${PYTHON_DEPS}
 	doc? ( app-doc/doxygen )"
 DEPEND="dev-cpp/tclap
