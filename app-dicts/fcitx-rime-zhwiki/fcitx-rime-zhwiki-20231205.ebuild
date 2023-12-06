@@ -17,7 +17,6 @@ SLOT="5"
 KEYWORDS="~amd64 ~mips ~x86"
 
 RDEPEND="
-	app-i18n/fcitx:5
 	app-i18n/rime-data
 "
 
