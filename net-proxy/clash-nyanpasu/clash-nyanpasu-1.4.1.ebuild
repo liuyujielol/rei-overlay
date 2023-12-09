@@ -658,7 +658,7 @@ RDEPEND="
 	mihomo? ( net-proxy/mihomo )
 "
 BDEPEND="
-	<dev-util/tauri-cli-2.0.0
+	<dev-util/tauri-cli-2.0.0_alpha1
 	dev-lang/typescript
 	dev-lang/quickjs
 	sys-apps/pnpm
