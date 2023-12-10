@@ -31,9 +31,9 @@ BDEPEND="
 
 src_compile() {
 	local ETAGS='with_gvisor,with_dhcp,with_wireguard,with_utls,with_reality_server,with_clash_api,with_quic,with_ech'
-	ego build -o ./bin/sing-box\
-		-v -trimpath -ldflags "-X 'github.com/sagernet/sing-box/constant.Version=${PV}' -s -w -buildid="\
-		-tags "${ETAGS}"\
+	ego build -o ./bin/sing-box \
+		-v -trimpath -ldflags "-X 'github.com/sagernet/sing-box/constant.Version=${PV}' -s -w -buildid=" \
+		-tags "${ETAGS}" \
 		./cmd/sing-box
 
 	ego run ./cmd/sing-box completion bash > "${PN}.bash"
