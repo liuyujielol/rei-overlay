@@ -15,13 +15,12 @@ concurrency:
 jobs:
   nvchecker:
     runs-on: ubuntu-latest
-    if: github.repository == 'liuyujielol/rei-overlay' && github.ref == 'refs/heads/main'
     container:
       image: ghcr.io/liangyongxiang/gentoo-testing:master
 
     steps:
     - name: checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: gentoo
       run: |
@@ -50,25 +49,34 @@ jobs:
         cd .github/workflows/
         echo -e "[keys]\ngithub = \"${{ secrets.GITHUB_TOKEN }}\"" > keyfile.toml
         nvchecker --file overlay.toml --keyfile keyfile.toml
-        echo "::set-output name=nvcmp::$(nvcmp --file overlay.toml --json --newer)"
+
+        sed -r -i \
+          -e 's#(\.|-|_)?a([[:digit:]]+)(",?)$#_alpah\2\3#' \
+          -e 's#(\.|-|_)?p([[:digit:]]+)(",?)$#_p\2\3#' \
+          -e 's#(\.|-|_)?rc([[:digit:]]+)(",?)$#_rc\2\3#' \
+          new_ver.json
+
+        cat new_ver.json
+        echo "nvcmp=$(nvcmp --file overlay.toml --json --newer)" >> $GITHUB_OUTPUT
+
         echo "::endgroup::"
 
     - name: setup node
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v4
       with:
-        node-version: 16
+        node-version: latest
 
     - name: install github-script depends
       run: |
         npm install toml
 
     - name: update issues
-      uses: actions/github-script@v6
+      uses: actions/github-script@v7
       timeout-minutes: 1
       env:
         pkgs: ${{steps.nvchecker.outputs.nvcmp}}
       with:
-        github-token: ${{ secrets.REI_OVERLAY_NVCHECKER_PAT }}
+        github-token: ${{ secrets.GENTOO_ZH_NVCHECKER_PAT }} # https://github.com/microcai/gentoo-zh/pull/3130
         script: |
           const script = require('./.github/workflows/issues-bumper.js');
           (async function () {
