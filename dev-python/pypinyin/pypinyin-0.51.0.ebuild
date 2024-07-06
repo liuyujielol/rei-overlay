@@ -16,8 +16,8 @@ HOMEPAGE="
 
 # pypi tarballs are missing test data
 #SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-PHARSE_PINYIN_DATA_COMMIT="2cdc1f69fc85ab243a36bcebf882a0747fe1994f"
-PINYIN_DATA_COMMIT="889cde8bb0769747849f1d26bfc60c18efee1db3"
+PHARSE_PINYIN_DATA_COMMIT="1114cb9372804062e79d8b78affd333df41bf599"
+PINYIN_DATA_COMMIT="27dc54a206326e0d8d91428010325f50f614508d"
 SRC_URI="
 	https://github.com/mozillazg/python-pinyin/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz
 	https://github.com/mozillazg/phrase-pinyin-data/archive/${PHARSE_PINYIN_DATA_COMMIT}.tar.gz\
@@ -40,6 +40,9 @@ src_prepare() {
 	ln -sv "${WORKDIR}/pinyin-data-${PINYIN_DATA_COMMIT}/pinyin.txt" "${S}/pinyin-data/" || die
 	# for tests, remove coverage (pytest-cov)
 	sed -i -e 's:--cov-report term-missing::' pytest.ini || die
+	sed -e 's:git submodule init::' \
+		-e 's:git submodule update::' \
+		-i Makefile || die
 }
 
 src_compile() {
