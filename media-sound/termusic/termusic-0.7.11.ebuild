@@ -468,7 +468,6 @@ SRC_URI="
 	https://github.com/tramhao/termusic/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	${CARGO_CRATE_URIS}
 "
-RESTRICT="mirror"
 
 LICENSE="MIT"
 # Dependent crate licenses
@@ -478,6 +477,7 @@ LICENSE+="
 "
 SLOT="0"
 KEYWORDS="~amd64"
+RESTRICT="mirror"
 
 IUSE="+symphonia gst mpv +yt-dlp"
 REQUIRED_USE="^^ ( symphonia gst mpv )"

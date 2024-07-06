@@ -11,8 +11,8 @@ HOMEPAGE="https://www.qbittorrent.org"
 SRC_URI="
 	https://github.com/c0re100/qBittorrent-Enhanced-Edition/archive/release-${PV}.tar.gz -> ${P}.tar.gz
 "
-KEYWORDS="~amd64"
 S="${WORKDIR}/qBittorrent-Enhanced-Edition-release-${PV}"
+KEYWORDS="~amd64"
 
 LICENSE="GPL-2"
 SLOT="0"
