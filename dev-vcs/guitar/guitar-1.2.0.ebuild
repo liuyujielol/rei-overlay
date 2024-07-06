@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,6 +9,7 @@ inherit ruby-single qmake-utils desktop xdg
 DESCRIPTION="Git GUI Client"
 HOMEPAGE="https://soramimi.github.io/Guitar/"
 SRC_URI="https://github.com/soramimi/Guitar/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/Guitar-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -28,9 +29,6 @@ RDEPEND="
 	${DEPEND}
 "
 BDEPEND="${RUBY_DEPS}"
-
-MY_PN="Guitar"
-S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_compile() {
 	mkdir _bin || die

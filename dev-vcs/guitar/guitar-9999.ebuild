@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,17 +12,27 @@ HOMEPAGE="https://soramimi.github.io/Guitar/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+IUSE="qt5 +qt6"
+REQUIRED_USE="^^ ( qt5 qt6 )"
 
 DEPEND="
-	dev-qt/qtcore:5
-	dev-qt/qtgui:5
-	dev-qt/qtwidgets:5
-	dev-qt/qtnetwork:5
-	dev-qt/qtsvg:5
+	qt5? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtwidgets:5
+		dev-qt/qtnetwork:5
+		dev-qt/qtsvg:5
+		dev-qt/linguist-tools:5
+	)
+
+	qt6? (
+		dev-qt/qtbase:6[gui,network,widgets]
+		dev-qt/qt5compat:6
+		dev-qt/qtsvg:6
+	)
+
 	sys-libs/zlib[static-libs]
 	dev-libs/openssl:=
-	dev-qt/linguist-tools:5
 "
 RDEPEND="
 	${DEPEND}
@@ -33,10 +43,12 @@ src_unpack() {
 	git-r3_src_unpack
 }
 
-src_compile() {
-	mkdir _bin || die
-	eqmake5 -o Makefile Guitar.pro CONFIG+=release PREFIX=/usr
-	emake
+src_configure() {
+	if use qt5; then
+		eqmake5 CONFIG=release Guitar.pro
+	else
+		eqmake6 CONFIG=release Guitar.pro
+	fi
 }
 
 src_install() {
