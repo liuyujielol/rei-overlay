@@ -12,10 +12,10 @@ SRC_URI="
 	https://github.com/c0re100/qBittorrent-Enhanced-Edition/archive/release-${PV}.tar.gz -> ${P}.tar.gz
 "
 S="${WORKDIR}/qBittorrent-Enhanced-Edition-release-${PV}"
-KEYWORDS="~amd64"
 
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="~amd64"
 IUSE="+dbus +gui qt6 systemd test webui"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="|| ( gui webui )
