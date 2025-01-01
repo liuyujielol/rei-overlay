@@ -1,0 +1,58 @@
+#!/sbin/openrc-run
+# Copyright 2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+SS_RS_SVCNAME="${RC_SVCNAME#*.}"
+
+command="/usr/bin/ss${SS_RS_SVCNAME}"
+command_args="${SS_RS_ARGS}"
+command_user="nobody:nobody"
+
+capabilities="^cap_net_admin,^cap_net_bind_service"
+pidfile="/run/${RC_SVCNAME}.pid"
+
+depend() {
+	use net dns
+}
+
+checkconfig() {
+	if [ ! -f ${SS_RS_CONFIG} ]; then
+		ewarn "${SS_RS_CONFIG} does not exist."
+	fi
+
+	case ${SS_RS_SVCNAME} in
+	local)
+		return 0
+	;;
+	server)
+		return 0
+	;;
+	*)
+		eerror "please choose to run as server or client mode"
+		eerror "  server: rc-update add shadowsocks-rust.server default"
+		eerror "  client: rc-update add shadowsocks-rust.local default"
+		return 1
+		;;
+	esac
+}
+
+start_pre() {
+  # If this isn't a restart, make sure that the user's config isn't
+  # busted before we try to start the daemon (this will produce
+  # better error messages than if we just try to start it blindly).
+  #
+  # If, on the other hand, this *is* a restart, then the stop_pre
+  # action will have ensured that the config is usable and we don't
+  # need to do that again.
+  if [ "${RC_CMD}" != "restart" ] ; then
+    checkconfig || return $?
+  fi
+}
+
+stop_pre() {
+  # If this is a restart, check to make sure the user's config
+  # isn't busted before we stop the running daemon.
+  if [ "${RC_CMD}" = "restart" ] ; then
+      checkconfig || return $?
+  fi
+}
