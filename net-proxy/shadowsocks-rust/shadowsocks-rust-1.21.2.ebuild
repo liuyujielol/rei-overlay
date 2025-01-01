@@ -482,6 +482,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64"
 IUSE="redir tun"
 
+DEPEND="
+	|| (
+		sys-apps/openrc[caps]
+		sys-apps/systemd
+	)
+"
+
 QA_FLAGS_IGNORED="
 	usr/bin/sslocal
 	usr/bin/ssmanager
