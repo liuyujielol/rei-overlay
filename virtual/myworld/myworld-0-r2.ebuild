@@ -8,7 +8,7 @@ DESCRIPTION="My Custom World"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+dist-kernel +fcitx +fonts +gentoo-zh +intel +kde +misc +portage"
+IUSE="+dist-kernel +fcitx +fonts +games +gentoo-zh +intel +kde +misc +multimedia +portage"
 
 RDEPEND="
 	www-client/firefox
@@ -27,6 +27,10 @@ RDEPEND="
 		media-fonts/ibm-plex
 		media-fonts/ms-windows
 		media-fonts/nerd-fonts[ibmplexmono,-nerdfontssymbolsonly]
+	)
+	games? (
+		games-action/prismlauncher
+		games-action/vintagestory
 	)
 	gentoo-zh? (
 		net-proxy/v2rayA
@@ -47,6 +51,7 @@ RDEPEND="
 		media-libs/vulkan-layers
 		x11-apps/mesa-progs
 		x11-apps/xdpyinfo
+		x11-themes/papirus-icon-theme
 	)
 	misc? (
 		app-admin/doas
@@ -65,12 +70,22 @@ RDEPEND="
 		sys-fs/ntfs3g
 		sys-fs/xfsprogs
 	)
+	multimedia? (
+		media-gfx/graphviz
+		media-gfx/gimp
+		media-gfx/icoutils
+		media-gfx/inkscape
+		media-gfx/krita
+		media-gfx/nomacs
+		media-video/haruna
+	)
 	portage? (
 		app-eselect/eselect-repository
 		app-portage/eix
 		app-portage/euses
 		app-portage/flaggie
 		app-portage/gentoolkit
+		app-portage/pycargoebuild
 		app-text/ansifilter[-gui]
 		dev-dotnet/gentoo-dotnet-maintainer-tools
 		dev-util/pkgdev
