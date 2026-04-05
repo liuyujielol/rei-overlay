@@ -29,6 +29,9 @@ RDEPEND="
 		media-fonts/nerd-fonts[ibmplexmono,-nerdfontssymbolsonly]
 	)
 	games? (
+		app-emulation/dxvk
+		app-emulation/vkd3d-proton
+		app-emulation/wine-proton
 		games-action/prismlauncher
 		games-action/vintagestory
 	)
@@ -57,12 +60,15 @@ RDEPEND="
 		app-admin/doas
 		app-editors/nano
 		app-editors/vim
+		app-editors/zed
 		app-shells/bash-completion
 		app-shells/gentoo-zsh-completions
 		app-shells/zsh
 		app-shells/zsh-completions
+		dev-qt/qt-creator
 		net-im/telegram-desktop[-webkit]
 		net-p2p/qbittorrent-enhanced
+		sys-apps/ripgrep
 		sys-apps/zram-generator
 		sys-auth/rtkit
 		sys-fs/dosfstools
@@ -77,6 +83,7 @@ RDEPEND="
 		media-gfx/inkscape
 		media-gfx/krita
 		media-gfx/nomacs
+		media-sound/strawberry
 		media-video/haruna
 	)
 	portage? (
