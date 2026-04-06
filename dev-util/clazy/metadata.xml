@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!--maintainer-needed -->
+<!-- maintainer-needed -->
 	<upstream>
 		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=clazy</bugs-to>
 		<remote-id type="kde-invent">sdk/clazy</remote-id>

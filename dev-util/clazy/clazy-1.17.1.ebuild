@@ -5,7 +5,7 @@ EAPI=8
 
 LLVM_COMPAT=( {20..22} )
 PYTHON_COMPAT=( python3_{11..14} )
-inherit cmake llvm-r1 python-any-r1
+inherit cmake llvm-r2 python-any-r1
 
 DESCRIPTION="Compiler plugin which allows clang to understand Qt semantics"
 HOMEPAGE="https://apps.kde.org/clazy"
@@ -14,7 +14,7 @@ S="${WORKDIR}/${PN}-v${PV}"
 
 LICENSE="LGPL-2+"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~x86"
+KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -44,7 +44,7 @@ PATCHES=(
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
-	llvm-r1_pkg_setup
+	llvm-r2_pkg_setup
 }
 
 src_prepare() {
