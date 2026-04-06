@@ -17,6 +17,10 @@ RDEPEND="
 		app-emulation/virt-manager
 		dev-qt/qt-docs
 		dev-qt/qt-creator
+		dev-util/astyle
+		dev-util/clazy
+		dev-util/cppcheck
+		dev-util/uncrustify
 		sys-apps/ripgrep
 	)
 	dist-kernel? (
