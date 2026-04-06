@@ -8,10 +8,17 @@ DESCRIPTION="My Custom World"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+dist-kernel +fcitx +fonts +games +gentoo-zh +intel +kde +misc +multimedia +portage"
+IUSE="+devel +dist-kernel +fcitx +fonts +games +gentoo-zh +intel +kde +misc +multimedia +portage"
 
 RDEPEND="
 	www-client/firefox
+	devel? (
+		app-editors/zed
+		app-emulation/virt-manager
+		dev-qt/qt-docs
+		dev-qt/qt-creator
+		sys-apps/ripgrep
+	)
 	dist-kernel? (
 		sys-boot/os-prober
 		sys-kernel/gentoo-kernel-bin
@@ -52,6 +59,7 @@ RDEPEND="
 		kde-apps/kdeutils-meta
 		kde-plasma/plasma-meta
 		media-libs/vulkan-layers
+		sys-auth/rtkit
 		x11-apps/mesa-progs
 		x11-apps/xdpyinfo
 		x11-themes/papirus-icon-theme
@@ -60,17 +68,13 @@ RDEPEND="
 		app-admin/doas
 		app-editors/nano
 		app-editors/vim
-		app-editors/zed
 		app-shells/bash-completion
 		app-shells/gentoo-zsh-completions
 		app-shells/zsh
 		app-shells/zsh-completions
-		dev-qt/qt-creator
 		net-im/telegram-desktop[-webkit]
 		net-p2p/qbittorrent-enhanced
-		sys-apps/ripgrep
 		sys-apps/zram-generator
-		sys-auth/rtkit
 		sys-fs/dosfstools
 		sys-fs/exfatprogs
 		sys-fs/ntfs3g
@@ -87,6 +91,7 @@ RDEPEND="
 		media-video/haruna
 	)
 	portage? (
+		app-admin/eclean-kernel
 		app-eselect/eselect-repository
 		app-portage/eix
 		app-portage/euses
