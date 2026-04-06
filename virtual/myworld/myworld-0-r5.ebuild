@@ -13,8 +13,11 @@ IUSE="+devel +dist-kernel +fcitx +fonts +games +gentoo-zh +intel +kde +misc +mul
 RDEPEND="
 	www-client/firefox
 	devel? (
+		app-editors/lapce
 		app-editors/zed
 		app-emulation/virt-manager
+		dev-debug/gdb
+		llvm-core/lldb
 		dev-qt/qt-docs
 		dev-qt/qt-creator
 		dev-util/astyle
