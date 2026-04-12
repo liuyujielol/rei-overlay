@@ -12,6 +12,7 @@ IUSE="+devel +dist-kernel +fcitx +fonts +games +gentoo-zh +intel +kde +misc +mul
 
 RDEPEND="
 	www-client/firefox
+	www-client/chromium:stable
 	devel? (
 		app-editors/lapce
 		app-editors/zed
@@ -48,6 +49,9 @@ RDEPEND="
 		app-emulation/wine-proton
 		games-action/prismlauncher
 		games-action/vintagestory
+		games-util/mangohud
+		games-util/steam-launcher
+		gnome-extra/zenity
 	)
 	gentoo-zh? (
 		net-proxy/v2rayA
@@ -64,6 +68,8 @@ RDEPEND="
 		dev-util/clinfo
 		dev-util/vulkan-tools[cube]
 		kde-apps/kdeutils-meta
+		kde-apps/kdesdk-meta
+		kde-apps/kdialog
 		kde-plasma/plasma-meta
 		media-libs/vulkan-layers
 		sys-auth/rtkit
@@ -79,13 +85,22 @@ RDEPEND="
 		app-shells/gentoo-zsh-completions
 		app-shells/zsh
 		app-shells/zsh-completions
+		app-misc/fastfetch
 		net-im/telegram-desktop[-webkit]
 		net-p2p/qbittorrent-enhanced
+		sys-apps/bat
+		sys-apps/eza
+		sys-apps/uutils-coreutils
 		sys-apps/zram-generator
 		sys-fs/dosfstools
 		sys-fs/exfatprogs
 		sys-fs/ntfs3g
 		sys-fs/xfsprogs
+		sys-kernel/modprobed-db
+		sys-process/btop
+		sys-process/htop
+		sys-process/lsof
+		sys-process/nvtop
 	)
 	multimedia? (
 		media-gfx/graphviz
@@ -107,6 +122,7 @@ RDEPEND="
 		app-portage/pycargoebuild
 		app-text/ansifilter[-gui]
 		dev-dotnet/gentoo-dotnet-maintainer-tools
+		dev-util/ccache
 		dev-util/pkgdev
 	)
 "
