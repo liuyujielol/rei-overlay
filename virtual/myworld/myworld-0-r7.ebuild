@@ -11,16 +11,11 @@ KEYWORDS="~amd64"
 IUSE="+devel +dist-kernel +fcitx +fonts +games +gentoo-zh +intel +kde +misc +multimedia +portage"
 
 RDEPEND="
-	www-client/firefox
-	www-client/chromium:stable
+	www-client/google-chrome
 	devel? (
-		app-editors/lapce
-		app-editors/zed
-		app-emulation/virt-manager
 		dev-debug/gdb
+		llvm-core/flang
 		llvm-core/lldb
-		dev-qt/qt-docs
-		dev-qt/qt-creator
 		dev-util/astyle
 		dev-util/clazy
 		dev-util/cppcheck
@@ -28,8 +23,9 @@ RDEPEND="
 		sys-apps/ripgrep
 	)
 	dist-kernel? (
-		sys-boot/os-prober
+		sys-boot/grub[-branding]
 		sys-kernel/gentoo-kernel-bin
+		sys-kernel/installkernel[dracut,grub]
 		sys-kernel/linux-firmware
 	)
 	fcitx? (
@@ -42,15 +38,11 @@ RDEPEND="
 		media-fonts/ibm-plex
 		media-fonts/ms-windows
 		media-fonts/nerd-fonts[ibmplexmono,-nerdfontssymbolsonly]
+		media-fonts/noto-cjk
 	)
 	games? (
-		app-emulation/dxvk
-		app-emulation/vkd3d-proton
-		app-emulation/wine-proton
 		games-action/prismlauncher
 		games-action/vintagestory
-		games-util/mangohud
-		games-util/steam-launcher
 		gnome-extra/zenity
 	)
 	gentoo-zh? (
@@ -63,52 +55,58 @@ RDEPEND="
 		media-libs/vpl-gpu-rt
 	)
 	kde? (
+		app-arch/7zip
+		app-arch/rar
+		app-crypt/keysmith
 		app-misc/wayland-utils
 		app-text/aha
 		dev-util/clinfo
 		dev-util/vulkan-tools[cube]
-		kde-apps/kdeutils-meta
-		kde-apps/kdesdk-meta
-		kde-apps/kdialog
-		kde-plasma/plasma-meta
+		kde-apps/kdecore-meta
+		kde-apps/ark
+		kde-apps/filelight
+		kde-apps/kate
+		kde-apps/kcalc
+		kde-apps/kcharselect
+		kde-apps/kdecore-meta
+		kde-apps/kgpg
+		kde-apps/kwalletmanager
+		kde-apps/sweeper
+		kde-apps/yakuake
+		kde-misc/kclock
+		kde-misc/markdownpart
+		kde-plasma/plasma-meta[-browser-integration,-sdk,-webengine]
 		media-libs/vulkan-layers
+		net-misc/networkmanager[iwd,nftables,connection-sharing]
 		sys-auth/rtkit
 		x11-apps/mesa-progs
 		x11-apps/xdpyinfo
 		x11-themes/papirus-icon-theme
 	)
 	misc? (
-		app-admin/doas
+		app-admin/doas[pam,persist]
 		app-editors/nano
-		app-editors/vim
 		app-shells/bash-completion
 		app-shells/gentoo-zsh-completions
 		app-shells/zsh
 		app-shells/zsh-completions
 		app-misc/fastfetch
+		net-misc/aria2
+		net-misc/sniffnet
 		net-im/telegram-desktop[-webkit]
 		net-p2p/qbittorrent-enhanced
-		sys-apps/bat
-		sys-apps/eza
-		sys-apps/uutils-coreutils
-		sys-apps/zram-generator
+		sys-apps/dmidecode
 		sys-fs/dosfstools
 		sys-fs/exfatprogs
 		sys-fs/ntfs3g
 		sys-fs/xfsprogs
-		sys-kernel/modprobed-db
 		sys-process/btop
 		sys-process/htop
 		sys-process/lsof
 		sys-process/nvtop
 	)
 	multimedia? (
-		media-gfx/graphviz
-		media-gfx/gimp
-		media-gfx/icoutils
-		media-gfx/inkscape
-		media-gfx/krita
-		media-gfx/nomacs
+		media-gfx/nomacs[opencv,plugins,raw,tiff,zip]
 		media-sound/strawberry
 		media-video/haruna
 	)
