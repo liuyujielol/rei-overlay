@@ -13,9 +13,12 @@ IUSE="+devel +dist-kernel +fcitx +fonts +games +gentoo-zh +intel +kde +misc +mul
 RDEPEND="
 	www-client/google-chrome
 	devel? (
+		app-editors/emacs[-X,-Xaw3d,-athena,dynamic-loading,gtk,gui,harfbuzz,jit,mailutils,-motif,tree-sitter]
 		dev-debug/gdb
 		llvm-core/flang
 		llvm-core/lldb
+		dev-qt/qt-creator[clang,help,svg,tracing,designer,doc,qmldesigner]
+		dev-qt/qt-docs[examples,qch]
 		dev-util/astyle
 		dev-util/clazy
 		dev-util/cppcheck
