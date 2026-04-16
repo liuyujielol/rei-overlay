@@ -13,12 +13,12 @@ IUSE="+devel +dist-kernel +fcitx +fonts +games +gentoo-zh +intel +kde +misc +mul
 RDEPEND="
 	www-client/google-chrome
 	devel? (
-		app-editors/emacs[-X,-Xaw3d,-athena,dynamic-loading,gtk,gui,harfbuzz,jit,mailutils,-motif,tree-sitter]
+		app-editors/emacs
 		dev-debug/gdb
 		llvm-core/flang
 		llvm-core/lldb
-		dev-qt/qt-creator[clang,help,svg,tracing,designer,doc,qmldesigner]
-		dev-qt/qt-docs[examples,qch]
+		dev-qt/qt-creator
+		dev-qt/qt-docs
 		dev-util/astyle
 		dev-util/clazy
 		dev-util/cppcheck
@@ -26,13 +26,13 @@ RDEPEND="
 		sys-apps/ripgrep
 	)
 	dist-kernel? (
-		sys-boot/grub[-branding]
+		sys-boot/grub
 		sys-kernel/gentoo-kernel-bin
-		sys-kernel/installkernel[dracut,grub]
+		sys-kernel/installkernel
 		sys-kernel/linux-firmware
 	)
 	fcitx? (
-		app-i18n/fcitx-configtool[kcm]
+		app-i18n/fcitx-configtool
 		app-i18n/fcitx-gtk
 		app-i18n/fcitx-qt
 		app-i18n/fcitx-rime
@@ -40,7 +40,7 @@ RDEPEND="
 	fonts? (
 		media-fonts/ibm-plex
 		media-fonts/ms-windows
-		media-fonts/nerd-fonts[ibmplexmono,-nerdfontssymbolsonly]
+		media-fonts/nerd-fonts
 		media-fonts/noto-cjk
 	)
 	games? (
@@ -64,7 +64,7 @@ RDEPEND="
 		app-misc/wayland-utils
 		app-text/aha
 		dev-util/clinfo
-		dev-util/vulkan-tools[cube]
+		dev-util/vulkan-tools
 		kde-apps/kdecore-meta
 		kde-apps/ark
 		kde-apps/filelight
@@ -78,16 +78,16 @@ RDEPEND="
 		kde-apps/yakuake
 		kde-misc/kclock
 		kde-misc/markdownpart
-		kde-plasma/plasma-meta[-browser-integration,-sdk,-webengine]
+		kde-plasma/plasma-meta
 		media-libs/vulkan-layers
-		net-misc/networkmanager[iwd,nftables,connection-sharing]
+		net-misc/networkmanager
 		sys-auth/rtkit
 		x11-apps/mesa-progs
 		x11-apps/xdpyinfo
 		x11-themes/papirus-icon-theme
 	)
 	misc? (
-		app-admin/doas[pam,persist]
+		app-admin/doas
 		app-editors/nano
 		app-shells/bash-completion
 		app-shells/gentoo-zsh-completions
@@ -96,7 +96,7 @@ RDEPEND="
 		app-misc/fastfetch
 		net-misc/aria2
 		net-misc/sniffnet
-		net-im/telegram-desktop[-webkit]
+		net-im/telegram-desktop
 		net-p2p/qbittorrent-enhanced
 		sys-apps/dmidecode
 		sys-fs/dosfstools
@@ -109,7 +109,7 @@ RDEPEND="
 		sys-process/nvtop
 	)
 	multimedia? (
-		media-gfx/nomacs[opencv,plugins,raw,tiff,zip]
+		media-gfx/nomacs
 		media-sound/strawberry
 		media-video/haruna
 	)
@@ -121,7 +121,7 @@ RDEPEND="
 		app-portage/flaggie
 		app-portage/gentoolkit
 		app-portage/pycargoebuild
-		app-text/ansifilter[-gui]
+		app-text/ansifilter
 		dev-dotnet/gentoo-dotnet-maintainer-tools
 		dev-util/ccache
 		dev-util/pkgdev
