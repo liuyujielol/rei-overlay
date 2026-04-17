@@ -65,6 +65,7 @@ RDEPEND="
 		app-text/aha
 		dev-util/clinfo
 		dev-util/vulkan-tools
+		kde-apps/kdeadmin-meta
 		kde-apps/kdecore-meta
 		kde-apps/ark
 		kde-apps/filelight
