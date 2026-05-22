@@ -1,2 +1,3 @@
 amd64 llvm-plasma-systemd exp
+amd64 musl-llvm-plasma-systemd exp
 amd64 hardened-plasma-systemd exp
